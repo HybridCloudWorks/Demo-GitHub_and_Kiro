@@ -10,8 +10,7 @@
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
-    "write-translations": "docusaurus write-translations",
-    "typecheck": "tsc --noEmit || true"
+    "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

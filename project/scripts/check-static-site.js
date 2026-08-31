@@ -45,8 +45,12 @@ must('app.js');
 // 2. + 3. Inspect index.html
 const indexPath = path.join(projectDir, 'index.html');
 if (fs.existsSync(indexPath)) {
-  const html = fs.readFileSync(indexPath, 'utf8');
-  const lower = html.toLowerCase().replace(/<!--[\s\S]*?-->/g, '');
+  const rawHtml = fs.readFileSync(indexPath, 'utf8');
+  // Strip HTML comments once, and use the comment-free source for BOTH the
+  // tag-balance checks and the local-asset scan so that href/src mentioned
+  // inside comments are never treated as real references.
+  const html = rawHtml.replace(/<!--[\s\S]*?-->/g, '');
+  const lower = html.toLowerCase();
 
   if (!/<!doctype html>/.test(lower)) {
     problems.push('index.html is missing <!doctype html>');

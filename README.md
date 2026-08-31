@@ -4,7 +4,7 @@
 > all the way to advanced GitHub automation and Kiro power-user workflows — building a real,
 > deployed web app along the way.
 
-[![Deploy Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](#-the-published-course-site)
+[![Deploy Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](./.github/workflows/deploy-docs.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
 ---

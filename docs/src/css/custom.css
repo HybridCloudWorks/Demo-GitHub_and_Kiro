@@ -25,7 +25,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Give the level "generated-index" cards a little more breathing room. */
+/* Add a little breathing room under the H1 heading on every doc page. */
 article header h1 {
   margin-bottom: 0.5rem;
 }
