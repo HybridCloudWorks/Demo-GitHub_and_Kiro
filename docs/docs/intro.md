@@ -28,14 +28,14 @@ exactly the right place. We define every term the first time it appears.
 
 | Level | Focus |
 |-------|-------|
-| [L0 · Getting Started](/level-0) | Version control, accounts, installing Git + Kiro, first repo |
-| [L1 · Git & GitHub Fundamentals](/level-1) | Commits, branches, remotes, push/pull, `.gitignore` |
-| [L2 · Kiro Fundamentals](/level-2) | The Kiro workspace, chat, editing, scaffolding the app |
-| [L3 · Collaboration](/level-3) | Issues, pull requests, reviews, branch protection |
-| [L4 · GitHub Actions](/level-4) | CI, workflows, deploying the app |
-| [L5 · Kiro Advanced Authoring](/level-5) | Steering files, specs, agent hooks |
-| [L6 · Kiro Power Tools](/level-6) | MCP servers, custom agents, Kiro × GitHub |
-| [L7 · Advanced GitHub + Capstone](/level-7) | Branch protection, environments, Apps, Codespaces |
+| [L0 · Getting Started](/docs/level-0) | Version control, accounts, installing Git + Kiro, first repo |
+| [L1 · Git & GitHub Fundamentals](/docs/level-1) | Commits, branches, remotes, push/pull, `.gitignore` |
+| [L2 · Kiro Fundamentals](/docs/level-2) | The Kiro workspace, chat, editing, scaffolding the app |
+| [L3 · Collaboration](/docs/level-3) | Issues, pull requests, reviews, branch protection |
+| [L4 · GitHub Actions](/docs/level-4) | CI, workflows, deploying the app |
+| [L5 · Kiro Advanced Authoring](/docs/level-5) | Steering files, specs, agent hooks |
+| [L6 · Kiro Power Tools](/docs/level-6) | MCP servers, custom agents, Kiro × GitHub |
+| [L7 · Advanced GitHub + Capstone](/docs/level-7) | Branch protection, environments, Apps, Codespaces |
 
 ## 📊 Track your progress
 
@@ -57,5 +57,5 @@ Tick these off as you go — one box per level:
 - [Appendix: Custom Domain](./appendix-custom-domain.md) — optional, for later.
 
 :::tip Ready?
-Head to **[Level 0 · Getting Started](/level-0)** to begin.
+Head to **[Level 0 · Getting Started](/docs/level-0)** to begin.
 :::

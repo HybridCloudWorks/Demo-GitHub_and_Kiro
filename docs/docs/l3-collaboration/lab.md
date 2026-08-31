@@ -46,5 +46,5 @@ request and tagged **`milestone-l3`**.
 
 ## ➡️ Next
 
-You've completed Level 3! Continue to **[Level 4 · Automation with GitHub Actions](/level-4)** to
+You've completed Level 3! Continue to **[Level 4 · Automation with GitHub Actions](/docs/level-4)** to
 make robots run your checks and deploy your app.

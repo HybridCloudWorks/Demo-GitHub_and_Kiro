@@ -1,0 +1,24 @@
+{
+  "name": "GitHub + Kiro Course",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "cd docs && npm install",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Docs site (Docusaurus)",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "DavidAnson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  }
+}

@@ -41,5 +41,5 @@ node labs/_grader/grade.js l1 labs/l1/solution    # the reference passes 13/13
 
 ## ➡️ Next
 
-You've completed Level 1! Continue to **[Level 2 · Kiro Fundamentals](/level-2)**, where you'll
+You've completed Level 1! Continue to **[Level 2 · Kiro Fundamentals](/docs/level-2)**, where you'll
 meet Kiro and start building the real project app.

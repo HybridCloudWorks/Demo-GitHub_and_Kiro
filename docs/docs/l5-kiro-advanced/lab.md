@@ -47,5 +47,5 @@ spec adds a Contact section to the homepage, tagged **`milestone-l5`**.
 
 ## ➡️ Next
 
-You've completed Level 5! Continue to **[Level 6 · Kiro Power Tools](/level-6)** for MCP servers,
+You've completed Level 5! Continue to **[Level 6 · Kiro Power Tools](/docs/level-6)** for MCP servers,
 custom agents, and integrating Kiro with GitHub.

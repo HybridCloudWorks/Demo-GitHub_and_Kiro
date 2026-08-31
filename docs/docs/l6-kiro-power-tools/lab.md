@@ -52,4 +52,4 @@ node labs/_grader/grade.js l6 labs/l6/solution    # the reference passes 4/4
 ## ➡️ Next
 
 You've completed Level 6! Continue to the finale:
-**[Level 7 · Advanced GitHub + Capstone](/level-7)**.
+**[Level 7 · Advanced GitHub + Capstone](/docs/level-7)**.

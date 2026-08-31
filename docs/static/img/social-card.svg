@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="GitHub + Kiro: Level 0 to Advanced">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- decorative badges -->
+  <g opacity="0.15" fill="#ffffff">
+    <circle cx="1040" cy="120" r="70"/>
+    <circle cx="1120" cy="500" r="110"/>
+    <circle cx="120" cy="540" r="60"/>
+  </g>
+
+  <!-- logo marks -->
+  <g transform="translate(90,90)">
+    <rect width="96" height="96" rx="20" fill="#ffffff" opacity="0.12"/>
+    <path transform="translate(20,20) scale(2.35)" fill="#ffffff"
+      d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.68c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.66.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>
+  </g>
+  <text x="200" y="152" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="40" font-weight="700" fill="#ffffff">GitHub</text>
+  <text x="330" y="152" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="40" font-weight="400" fill="#dbeafe">+ Kiro</text>
+
+  <!-- title -->
+  <text x="90" y="330" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="92" font-weight="800" fill="#ffffff">Level 0 to Advanced</text>
+  <text x="92" y="410" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="38" font-weight="400" fill="#e0e7ff">From “what is version control?” to advanced</text>
+  <text x="92" y="458" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="38" font-weight="400" fill="#e0e7ff">GitHub automation and Kiro power workflows.</text>
+
+  <!-- footer chips -->
+  <g font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="26" font-weight="600" fill="#1e3a8a">
+    <rect x="90"  y="520" width="230" height="56" rx="28" fill="#ffffff"/>
+    <text x="120" y="557">8 Levels · L0–L7</text>
+    <rect x="340" y="520" width="210" height="56" rx="28" fill="#ffffff"/>
+    <text x="370" y="557">7 Graded Labs</text>
+    <rect x="570" y="520" width="270" height="56" rx="28" fill="#ffffff"/>
+    <text x="600" y="557">Free on GitHub Pages</text>
+  </g>
+</svg>
