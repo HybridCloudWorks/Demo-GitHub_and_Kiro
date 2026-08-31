@@ -30,7 +30,8 @@ The project grows one level at a time. Each stage is tagged in Git:
 
 | Tag | Added in | What's new |
 |-----|----------|------------|
-| `milestone-l2` | Level 2 | The initial static page (this). |
-| `milestone-l3` | Level 3 | A feature added via a pull request. |
-| `milestone-l4` | Level 4 | Automated deployment to GitHub Pages. |
-| … | … | Further levels extend it with Kiro. |
+| `milestone-l2` | Level 2 | The initial static page. |
+| `milestone-l3` | Level 3 | An About section added via a pull request. |
+| `milestone-l4` | Level 4 | Automated deployment workflow to GitHub Pages. |
+| `milestone-l5` | Level 5 | A Contact section added spec-driven with Kiro. |
+| `milestone-l7` | Level 7 | A Projects section — the deployed, protected, automated capstone. |
