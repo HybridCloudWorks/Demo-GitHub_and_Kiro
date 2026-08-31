@@ -11,18 +11,28 @@ description: What Level 0 covers and what you'll be able to do by the end.
 
 > **Level:** L0 · **Estimated time:** 5 min · **Prerequisites:** none
 
-This overview will be expanded with full lessons. For now it establishes the Level 0 section
-of the course.
+Welcome to your very first level. You need **zero** prior experience. By the end you'll have
+the accounts and tools installed and you'll have made your first save in version control.
 
-## 🎯 Objectives
+## 🎯 What you'll achieve in Level 0
 
-By the end of Level 0 you will be able to:
+- Understand what version control is and *why* it exists
+- Create a free GitHub account
+- Install Git and Kiro on your computer
+- Create your first repository and record your first **commit**
 
-- Explain what version control is and why it matters
-- Create a GitHub account
-- Install Git and Kiro
-- Create your very first repository and make your first commit
+## 🧭 The lessons in this level
+
+1. [What is version control?](./what-is-version-control.md) — the big idea, in plain language.
+2. [Create your GitHub account](./create-github-account.md) — your home base online.
+3. [Install Git and Kiro](./install-git-and-kiro.md) — the two tools you'll use throughout.
+4. [Your first repository and commit](./first-repo-and-commit.md) — save your first change.
+
+:::tip Take your time
+There's no rush. Each lesson is short and ends with a checkpoint so you can confirm you're
+ready to move on.
+:::
 
 ## ➡️ Next
 
-Continue through the Level 0 lessons in order.
+Start with **[What is version control?](./what-is-version-control.md)**
