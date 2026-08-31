@@ -1,0 +1,42 @@
+:root {
+  --brand: #2563eb;
+  --ink: #1f2937;
+  --bg: #f8fafc;
+  --card: #fff;
+  --border: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+.site-header {
+  background: var(--brand);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+}
