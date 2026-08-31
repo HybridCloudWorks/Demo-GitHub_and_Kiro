@@ -61,7 +61,19 @@ const config = {
           editUrl: `https://github.com/${ORG}/${REPO}/tree/main/docs/`,
           routeBasePath: '/docs', // docs live under /docs; the React homepage owns /
         },
-        blog: false,
+        blog: {
+          blogTitle: 'The Starter Kit Blog',
+          blogDescription:
+            'Fun, practical guides to the features every new GitHub Pages repo should have.',
+          showReadingTime: true,
+          postsPerPage: 5,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 'ALL',
+          feedOptions: {
+            type: ['rss', 'atom'],
+            title: 'The Starter Kit Blog',
+          },
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -85,6 +97,11 @@ const config = {
             sidebarId: 'courseSidebar',
             position: 'left',
             label: 'Course',
+          },
+          {
+            to: '/blog',
+            label: 'Blog',
+            position: 'left',
           },
           {
             href: `https://github.com/${ORG}/${REPO}`,
