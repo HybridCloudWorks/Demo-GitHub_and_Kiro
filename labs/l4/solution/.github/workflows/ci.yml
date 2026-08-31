@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Say hello
+        run: echo "CI is running for commit $GITHUB_SHA"
+
+      - name: Verify the homepage exists
+        run: test -f project/index.html && echo "Found homepage"
