@@ -1,0 +1,69 @@
+name: Grade Labs
+
+# Runs the lab auto-grader. Two responsibilities:
+#   1. Grade every lab's reference solution (they must all pass) — this guards the course
+#      itself against regressions.
+#   2. Grade a learner's submission when they open a PR that touches labs/**.
+#
+# The grader is a dependency-free Node.js script (labs/_grader/grade.js), so this workflow
+# needs no npm install.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "labs/**"
+      - ".github/workflows/grade-labs.yml"
+  pull_request:
+    paths:
+      - "labs/**"
+
+permissions:
+  contents: read
+
+jobs:
+  grade-solutions:
+    name: Grade all reference solutions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Grade every lab solution
+        # Every labs/<id>/solution that has a labs/<id>/grade.def.js must pass.
+        run: |
+          set -e
+          shopt -s nullglob
+          any=0
+          for def in labs/*/grade.def.js; do
+            lab_dir=$(dirname "$def")
+            lab_id=$(basename "$lab_dir")
+            sol="$lab_dir/solution"
+            if [ -d "$sol" ]; then
+              any=1
+              echo "::group::Grading solution for '$lab_id'"
+              node labs/_grader/grade.js "$lab_id" "$sol"
+              echo "::endgroup::"
+            fi
+          done
+          if [ "$any" = "0" ]; then
+            echo "No lab solutions found to grade."
+          fi
+
+      - name: Self-test — grader must FAIL on a broken sample
+        # Regression guard: proves the harness actually fails when work is incomplete.
+        run: |
+          set +e
+          node labs/_grader/grade.js example labs/example/starter
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then
+            echo "❌ Grader passed the deliberately-broken starter — harness is broken."
+            exit 1
+          fi
+          echo "✅ Grader correctly failed the broken sample (exit $code)."

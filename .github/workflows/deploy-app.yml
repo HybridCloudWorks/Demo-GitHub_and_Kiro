@@ -1,0 +1,65 @@
+name: Deploy App to GitHub Pages
+
+# Publishes the static app in project/ to GitHub Pages.
+#
+# ⚠️ IMPORTANT — one Pages site per repository:
+# A repo can host only ONE GitHub Pages site. In THIS course monorepo, GitHub Pages is used
+# by the course website (see deploy-docs.yml). So this app-deploy workflow is MANUAL
+# (workflow_dispatch) by default to avoid fighting over the same Pages site.
+#
+# This file is the reference you copy into your OWN standalone app repository, where it becomes
+# the automatic deploy on push to main. There, project/ is your repo root (adjust the `path`).
+#
+# To use it as your app's automatic deploy in a dedicated repo:
+#   1. Put your static files at the repo root (or keep them in project/ and adjust `path`).
+#   2. Change the trigger to `push: branches: [main]`.
+#   3. Settings → Pages → Source: GitHub Actions.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Package the app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate the static site first
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run static-site check
+        run: node project/scripts/check-static-site.js
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the app as a Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # The folder to publish. In a standalone app repo, change to "." if files are at root.
+          path: project
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy artifact to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Learning Journal</title>
+    <meta
+      name="description"
+      content="A tiny app built while learning GitHub + Kiro."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>My Learning Journal</h1>
+      <p class="tagline">Built step by step with GitHub&nbsp;+&nbsp;Kiro.</p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Welcome 👋</h2>
+        <p>
+          This is the starting point of the project you build throughout the
+          course. Right now it's a simple static page. In later levels you'll
+          add features, deploy it to GitHub Pages, and extend it with Kiro.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>What I've learned so far</h2>
+        <ul id="milestones">
+          <li>L0 — Version control basics and my first commit</li>
+          <li>L1 — Branches, remotes, push/pull, and .gitignore</li>
+          <li>L2 — Kiro fundamentals and this very page</li>
+          <li>L3 — Collaboration: I added this About section via a pull request</li>
+          <li>L5 — Kiro advanced: I added the Contact section spec-driven</li>
+          <li>L7 — Capstone: Projects section, deployed, protected, automated</li>
+        </ul>
+      </section>
+
+      <section class="card" id="about">
+        <h2>About me</h2>
+        <p>
+          Hi! I'm learning to build and ship software with GitHub and Kiro. This
+          section was added the professional way — on a branch, through a
+          reviewed pull request, with automated checks passing before merge.
+        </p>
+      </section>
+
+      <section class="card" id="contact">
+        <h2>Contact</h2>
+        <p>
+          Reach me at
+          <a href="mailto:you@example.com">you@example.com</a>. This section was
+          built spec-driven with Kiro (see <code>.kiro/specs/contact-section</code>).
+        </p>
+      </section>
+
+      <section class="card" id="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            This journal — deployed free on GitHub Pages, automated with GitHub
+            Actions, and built with Kiro. Added as the L7 capstone.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with GitHub + Kiro · <span id="year"></span></p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

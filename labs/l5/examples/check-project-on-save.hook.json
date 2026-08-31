@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Check static site on save",
+      "description": "Runs the static-site validator whenever an HTML/CSS/JS file in project/ is saved, so problems surface immediately.",
+      "trigger": "PostFileSave",
+      "matcher": "project/.*\\.(html|css|js)$",
+      "action": {
+        "type": "command",
+        "command": "node project/scripts/check-static-site.js"
+      }
+    }
+  ]
+}
