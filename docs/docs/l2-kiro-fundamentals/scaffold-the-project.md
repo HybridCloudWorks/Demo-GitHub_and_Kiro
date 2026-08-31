@@ -91,5 +91,5 @@ Open the page in your browser and confirm the footer shows the current year — 
 ## ➡️ Next
 
 You've completed Level 2 and have a real app! Continue to
-**[Level 3 · Collaboration](/level-3)** to add a feature the professional way — through a pull
+**[Level 3 · Collaboration](/docs/level-3)** to add a feature the professional way — through a pull
 request.

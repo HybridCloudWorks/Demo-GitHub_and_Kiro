@@ -47,5 +47,5 @@ and is tagged **`milestone-l4`**.
 
 ## ➡️ Next
 
-You've completed Level 4! Continue to **[Level 5 · Kiro Advanced Authoring](/level-5)** to make
+You've completed Level 4! Continue to **[Level 5 · Kiro Advanced Authoring](/docs/level-5)** to make
 Kiro work smarter with steering, specs, and hooks.

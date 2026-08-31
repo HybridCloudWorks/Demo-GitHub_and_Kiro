@@ -59,9 +59,21 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // "Edit this page" points back at the repo so learners can contribute.
           editUrl: `https://github.com/${ORG}/${REPO}/tree/main/docs/`,
-          routeBasePath: '/', // docs are the homepage of the course site
+          routeBasePath: '/docs', // docs live under /docs; the React homepage owns /
         },
-        blog: false,
+        blog: {
+          blogTitle: 'The Starter Kit Blog',
+          blogDescription:
+            'Fun, practical guides to the features every new GitHub Pages repo should have.',
+          showReadingTime: true,
+          postsPerPage: 5,
+          blogSidebarTitle: 'Recent posts',
+          blogSidebarCount: 'ALL',
+          feedOptions: {
+            type: ['rss', 'atom'],
+            title: 'The Starter Kit Blog',
+          },
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -72,7 +84,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/social-card.png',
+      image: 'img/social-card.svg',
       navbar: {
         title: 'GitHub + Kiro',
         logo: {
@@ -85,6 +97,11 @@ const config = {
             sidebarId: 'courseSidebar',
             position: 'left',
             label: 'Course',
+          },
+          {
+            to: '/blog',
+            label: 'Blog',
+            position: 'left',
           },
           {
             href: `https://github.com/${ORG}/${REPO}`,
@@ -104,8 +121,8 @@ const config = {
           {
             title: 'Course',
             items: [
-              {label: 'Start at Level 0', to: '/l0-getting-started/welcome'},
-              {label: 'Learning path', to: '/'},
+              {label: 'Start at Level 0', to: '/docs/l0-getting-started/welcome'},
+              {label: 'Learning path', to: '/docs/'},
             ],
           },
           {

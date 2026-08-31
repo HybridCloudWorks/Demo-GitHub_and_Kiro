@@ -48,15 +48,25 @@ and have never heard the word "commit" — you are exactly who this course is fo
 
 ```text
 .
-├── docs/        # The course website (Docusaurus). Lessons for L0–L7 live here.
-├── project/     # The real static web app you build as you learn (HTML/CSS/JS).
-├── labs/        # Hands-on exercises + auto-grading + reference solutions.
-├── .github/     # GitHub Actions: deploy docs, deploy app, grade labs.
-├── .kiro/       # Real Kiro artifacts (steering, specs, hooks, mcp) used for teaching.
+├── docs/           # The course website (Docusaurus): L0–L7 lessons, plus a Blog.
+├── project/        # The real static web app you build as you learn (HTML/CSS/JS).
+├── labs/           # Hands-on exercises + auto-grading + reference solutions.
+├── adr/            # Architecture Decision Records (generic, portable rationale).
+├── .devcontainer/  # Ready-to-use Codespaces / dev-container environment.
+├── .github/        # GitHub Actions: deploy docs, deploy app, grade labs, lint, checks.
+├── .kiro/          # Real Kiro artifacts (steering, specs, hooks, mcp) used for teaching.
 ├── CONTRIBUTING.md
 ├── LICENSE
-└── README.md    # 👋 You are here.
+└── README.md       # 👋 You are here.
 ```
+
+### 📐 ADRs & 📝 Blog
+
+- **[Architecture Decision Records](./adr/)** — start with
+  [ADR 0001: Foundational Practices for New GitHub Pages Repositories](./adr/0001-foundational-practices-for-new-github-pages-repositories.md).
+  Generic, reusable rationale you can reference from any repo.
+- **The Starter Kit Blog** — published on the course site under `/blog`: fun, practical how-tos on
+  the features every new GitHub Pages repo should have.
 
 ---
 

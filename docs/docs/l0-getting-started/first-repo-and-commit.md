@@ -118,5 +118,5 @@ git log --oneline
 ## ➡️ Next
 
 You've finished Level 0 — congratulations! Continue to
-**[Level 1 · Git & GitHub Fundamentals](/level-1)** to learn branches, remotes, and pushing to
+**[Level 1 · Git & GitHub Fundamentals](/docs/level-1)** to learn branches, remotes, and pushing to
 GitHub.
