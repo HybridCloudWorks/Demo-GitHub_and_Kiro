@@ -91,8 +91,8 @@ const config = {
       navbar: {
         title: 'GitHub + Kiro',
         logo: {
-          alt: 'GitHub + Kiro course logo',
-          src: 'img/logo.svg',
+          alt: 'Kiro logo',
+          src: 'img/brand/kiro-logo.svg',
         },
         items: [
           {
@@ -142,7 +142,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Built with Docusaurus · Hosted free on GitHub Pages · MIT Licensed.`,
+        copyright: `Official AWS + Kiro training. “Powered by AWS” and the AWS logo are trademarks of Amazon.com, Inc. or its affiliates; Kiro and the Kiro logo are trademarks of their owner. Built with Docusaurus · Hosted on GitHub Pages · Course code MIT Licensed.`,
       },
       prism: {
         theme: themes.github,
