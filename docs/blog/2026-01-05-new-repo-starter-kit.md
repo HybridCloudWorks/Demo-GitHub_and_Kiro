@@ -1,15 +1,15 @@
 ---
 slug: new-repo-starter-kit
-title: "The 7-Point Starter Kit for Any New GitHub Pages Repo"
+title: "The 8-Point Starter Kit for Any New GitHub Pages Repo"
 authors: [starterkit]
 tags: [github-pages, ci-cd, devex, getting-started]
-description: A fun, practical checklist of the seven things to set up the moment you create a static-site repo — with high-level config and deploy notes for each.
+description: A fun, practical checklist of the eight things to set up the moment you create a static-site repo — with high-level config and deploy notes for each.
 ---
 
 You just clicked **New repository**. The cursor is blinking. What now? 🫣
 
 Most of us start typing code and *promise ourselves* we'll "set up the boring stuff later."
-Reader, later never comes. So here's a friendly, do-it-once **starter kit** — seven things that
+Reader, later never comes. So here's a friendly, do-it-once **starter kit** — eight things that
 turn a bare repo into a polished, self-driving little machine. None of it is hard. All of it pays
 for itself the first week.
 
@@ -27,6 +27,7 @@ We'll keep it generic (works for any static site on GitHub Pages) and give you t
 5. Social / Open Graph preview
 6. A dev container
 7. A seeded issue backlog
+8. Repo governance: CODEOWNERS + templates
 
 Think of it as *"the pit crew you set up before the race,"* not chores. Let's go. 🏁
 
@@ -169,11 +170,53 @@ gh issue create --title "Add an About section" \
 
 **Benefit:** contribution becomes self-service and your project *looks* alive (because it is).
 
+## 8. Repo governance — CODEOWNERS + templates
+
+**The vibe:** the first two things every drive-by contributor touches are *the issue they open*
+and *the PR they raise*. Give those a shape, and quietly make sure the right people get pinged for
+review. 🧭
+
+**How, three small files:**
+
+**a) `CODEOWNERS`** — auto-requests reviewers based on which paths changed. Last match wins:
+
+```text
+# .github/CODEOWNERS
+*            @your-org                 # default owner for everything
+/docs/       @your-org/docs-team       # docs changes ping the docs team
+/.github/    @your-org/platform-team   # CI/CD changes get extra scrutiny
+```
+
+Pair this with branch protection's "require review from Code Owners" and the right eyes land on
+the right changes automatically. (Owners need write access for the auto-request to fire.)
+
+**b) A pull request template** (`.github/pull_request_template.md`) — pre-fills every PR with a
+summary, a "Fixes #" line, a type checklist, and a "how did you test this?" section. It nudges
+contributors toward small, well-described, tested changes without you asking each time.
+
+**c) Issue forms** (`.github/ISSUE_TEMPLATE/*.yml`) — structured **bug** and **feature** forms with
+required fields, plus a `config.yml` that can disable blank issues and add helpful links
+(docs, FAQ, discussions):
+
+```yaml
+# .github/ISSUE_TEMPLATE/config.yml
+blank_issues_enabled: false
+contact_links:
+  - name: ❓ Question?
+    url: https://example.com/faq
+    about: Check the FAQ before opening an issue.
+```
+
+**Benefit:** consistent, reviewable contributions from day one, reviews routed to the right people
+automatically, and a lot less "could you add more detail?" back-and-forth. It's the cheapest
+professionalism upgrade a repo can get. ✨
+
 ## The payoff
 
-Set these seven up once — ideally from a template — and your repo basically runs itself: it
+Set these eight up once — ideally from a template — and your repo basically runs itself: it
 publishes on merge, blocks broken changes, welcomes visitors, markets its own links, onboards
-contributors in minutes, and hands newcomers a ready to-do list.
+contributors in minutes, hands newcomers a ready to-do list, and routes clean, well-formed
+contributions to the right reviewers.
 
 That's a lot of leverage for an afternoon of setup. Future-you says thanks. 💙
 

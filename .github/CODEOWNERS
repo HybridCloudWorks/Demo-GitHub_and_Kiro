@@ -1,0 +1,26 @@
+# CODEOWNERS — who gets automatically requested for review on matching paths.
+#
+# Order matters: the LAST matching pattern wins for a given file.
+# Replace the placeholder owners with real GitHub usernames or @org/team handles.
+# (Owners must have write access to the repo for auto-request to work.)
+
+# Default owner for everything in the repo.
+*                       @HybridCloudWorks
+
+# Course website (Docusaurus): docs content, config, theme.
+/docs/                  @HybridCloudWorks
+
+# Hands-on labs and the auto-grading harness.
+/labs/                  @HybridCloudWorks
+
+# The example project app.
+/project/               @HybridCloudWorks
+
+# CI/CD and repository automation — review carefully; these run with secrets.
+/.github/               @HybridCloudWorks
+
+# Kiro artifacts (steering, specs, hooks, settings).
+/.kiro/                 @HybridCloudWorks
+
+# Architecture Decision Records — decisions should get a deliberate review.
+/adr/                   @HybridCloudWorks

@@ -113,6 +113,18 @@ and acceptance criteria) representing the obvious first tasks.
 - **Consequence:** Contribution becomes self-service; maintainers spend less time triaging
   "what can I help with?"
 
+### 8. Repository governance (code ownership + contribution templates)
+
+Define code ownership (a `CODEOWNERS` file) and provide contribution templates (a pull request
+template and structured issue forms).
+
+- **Why:** Ownership rules route review to the people accountable for each area automatically, so
+  no change to a sensitive path (e.g. CI/CD) merges without the right eyes. Templates make the
+  first artifacts every contributor produces — issues and pull requests — consistent, complete,
+  and reviewable, reducing back-and-forth and enforcing conventions without manual policing.
+- **Consequence:** Contributions arrive well-formed and reach the correct reviewers by default;
+  governance is codified rather than tribal knowledge.
+
 ## Options considered
 
 For each concern, the practical alternatives were:
@@ -126,6 +138,7 @@ For each concern, the practical alternatives were:
 | Sharing | OG/social metadata | No preview metadata | Shared links look untrustworthy and get fewer clicks |
 | Environment | Committed dev container | "Read the setup docs" | Setup drift and slow, error-prone onboarding |
 | Work queue | Seeded, labeled issues | Empty tracker / private task list | No on-ramp for contributors; opaque priorities |
+| Governance | CODEOWNERS + issue/PR templates | Freeform issues/PRs; manual reviewer pings | Inconsistent contributions; review routed by memory, easily missed |
 
 A "do nothing / decide later" option was also considered and rejected: deferring these decisions
 simply pushes the same recurring cost onto every future contributor and every future repository.
@@ -158,8 +171,9 @@ simply pushes the same recurring cost onto every future contributor and every fu
 A new GitHub Pages repository is considered compliant with this ADR when it has: (1) an automated
 deploy workflow, (2) build + lint checks on pull requests, (3) branch protection requiring those
 checks, (4) a landing page and a descriptive README, (5) social/OG metadata, (6) a committed dev
-container, and (7) a seeded issue backlog. Teams should template these so compliance is the
-default rather than an afterthought.
+container, (7) a seeded issue backlog, and (8) repository governance (CODEOWNERS plus pull
+request and issue templates). Teams should template these so compliance is the default rather
+than an afterthought.
 
 ## References
 

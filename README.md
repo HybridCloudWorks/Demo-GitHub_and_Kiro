@@ -53,7 +53,7 @@ and have never heard the word "commit" — you are exactly who this course is fo
 ├── labs/           # Hands-on exercises + auto-grading + reference solutions.
 ├── adr/            # Architecture Decision Records (generic, portable rationale).
 ├── .devcontainer/  # Ready-to-use Codespaces / dev-container environment.
-├── .github/        # GitHub Actions: deploy docs, deploy app, grade labs, lint, checks.
+├── .github/        # Actions (deploy/grade/lint/checks), CODEOWNERS, issue & PR templates.
 ├── .kiro/          # Real Kiro artifacts (steering, specs, hooks, mcp) used for teaching.
 ├── CONTRIBUTING.md
 ├── LICENSE
