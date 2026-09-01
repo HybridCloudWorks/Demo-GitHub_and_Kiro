@@ -72,7 +72,7 @@ laptop.
 ## Quick self-check
 
 - [ ] I can explain what a Codespace is.
-- [ ] I launched a Codespace, or I know the exact steps to.
+- [ ] I launched a Codespace, or I know the exact steps to create one.
 - [ ] I understand that a `devcontainer.json` customizes the environment.
 
 ## Try it
