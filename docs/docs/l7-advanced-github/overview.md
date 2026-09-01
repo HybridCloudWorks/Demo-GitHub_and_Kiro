@@ -3,26 +3,27 @@ id: l7-advanced-github-overview
 title: "L7: Advanced GitHub + Capstone (overview)"
 sidebar_label: Overview
 sidebar_position: 1
-description: Branch protection rules, environments, GitHub Apps, Codespaces, and the capstone.
+description: The finale, hardening your repo with advanced branch protection, environments, GitHub Apps, and Codespaces, then tying it all together in a capstone.
 ---
 
 # L7 · Advanced GitHub + Capstone
 
 > **Level:** L7 · **Estimated time:** 10 min · **Prerequisites:** finished Level 6
 
-The finale. You'll harden your repository with advanced GitHub features, then bring
-**everything** together in a capstone that ties GitHub and Kiro into one polished, automated,
-deployed project.
+This is the finale, and it has two halves. First you'll harden your repository with the advanced
+GitHub features that real teams rely on: stronger protection rules, environments and secrets, apps,
+and cloud development. Then you'll bring *everything* from the whole course together in a capstone
+that ties GitHub and Kiro into one polished, automated, deployed project you can point anyone to.
 
-## 🎯 What you'll achieve in Level 7
+## What you'll be able to do by the end
 
-- Configure advanced **branch protection rules**
-- Use **environments** and **secrets** safely
-- Understand **GitHub Apps** and the Actions marketplace
+- Configure advanced **branch protection rules** and rulesets
+- Store **secrets** and gate deployments with **environments** safely
+- Explain what **GitHub Apps** are and reuse published Actions from the marketplace
 - Develop in the cloud with **Codespaces**
-- Complete the **capstone**: a deployed app in a fully configured repo built with Kiro
+- Complete the **capstone**: a deployed app in a fully configured repo, built with Kiro
 
-## 🧭 The lessons in this level
+## The lessons in this level
 
 1. [Advanced branch protection & rulesets](./branch-protection-advanced.md)
 2. [Environments & secrets](./environments-and-secrets.md)
@@ -30,6 +31,6 @@ deployed project.
 4. [Codespaces](./codespaces.md)
 5. [🏆 Capstone](./capstone.md)
 
-## ➡️ Next
+## Next
 
 Start with **[Advanced branch protection & rulesets](./branch-protection-advanced.md)**.

@@ -3,30 +3,28 @@ id: l5-hooks
 title: Agent Hooks
 sidebar_label: 3. Agent hooks
 sidebar_position: 4
-description: Automate actions in Kiro when events happen — like checking your site on every save.
+description: Automate actions in Kiro when events happen, such as re-checking your site on every save, and learn to read a hook definition safely.
 ---
 
 # Agent Hooks
 
 > **Level:** L5 · **Estimated time:** 15 min · **Prerequisites:** specs
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand what an **agent hook** is, learn to read a hook definition (its trigger, matcher, and
+action), and recognize the common triggers and when each one is useful.
 
-- Explain what an **agent hook** is
-- Read a hook definition (trigger, matcher, action)
-- Recognize common triggers and when to use them
+## What a hook does
 
-## 📖 Lesson
+An **agent hook** automatically runs an action when a chosen **event** happens in your workspace. Save
+a file, and it runs your checker. Submit a prompt, and it appends a standing reminder. Create a file,
+and it does something in response. The idea is to automate the small, repetitive "oh, I should run
+that now" moments so you don't have to remember them. Hooks live as JSON under `.kiro/hooks/`.
 
-### What is a hook?
+## Reading a hook definition
 
-An **agent hook** automatically runs an action when a chosen **event** happens in your
-workspace — for example, running a check every time you save a file, or appending a reminder
-when you submit a prompt. Hooks live as JSON under `.kiro/hooks/`.
-
-### Anatomy
+Here's a complete hook. Once you can read this, you can read any of them:
 
 ```json
 {
@@ -48,47 +46,56 @@ when you submit a prompt. Hooks live as JSON under `.kiro/hooks/`.
 
 | Field | Meaning |
 |-------|---------|
-| `trigger` | the event, e.g. `PostFileSave`, `PostFileCreate`, `UserPromptSubmit`, `PreToolUse` |
-| `matcher` | (optional) a regex — for file events it tests the file path |
-| `action.type` | `command` (run a shell command) or `agent` (inject a prompt) |
-| `action.command` | the command to run for `command` actions |
+| `trigger` | the event, such as `PostFileSave`, `PostFileCreate`, `UserPromptSubmit`, `PreToolUse` |
+| `matcher` | an optional regex; for file events it's tested against the file path |
+| `action.type` | `command` to run a shell command, or `agent` to inject a prompt |
+| `action.command` | the command to run, for `command` actions |
 
-### Common triggers
+The `matcher` is what keeps a hook from firing on everything. In the example, it only runs when the
+saved file is an HTML, CSS, or JS file inside `project/`, so editing an unrelated file doesn't trigger
+a pointless check.
 
-| Trigger | Fires when… |
-|---------|-------------|
+## The triggers you'll reach for most
+
+| Trigger | Fires when... |
+|---------|---------------|
 | `PostFileSave` | a file is saved |
 | `PostFileCreate` | a new file is created |
 | `PostFileDelete` | a file is deleted |
 | `UserPromptSubmit` | you submit a chat prompt |
 | `SessionStart` | a session begins |
 
-### The example in this course
+`PostFileSave` is the workhorse; most "check my work continuously" hooks hang off it.
 
-A ready-to-use hook is provided at
+## The example shipped with this course
+
+There's a ready-to-use hook at
 [`labs/l5/examples/check-project-on-save.hook.json`](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/blob/main/labs/l5/examples/check-project-on-save.hook.json).
-It runs the static-site checker whenever you save an HTML/CSS/JS file in `project/`.
+It runs the static-site checker whenever you save an HTML, CSS, or JS file in `project/`. To use it,
+copy it into `.kiro/hooks/` in your workspace (for example, `.kiro/hooks/check-project-on-save.json`).
+From then on, every save re-validates your site, giving you instant feedback instead of a nasty
+surprise later.
 
-To use it in your own workspace, copy it into `.kiro/hooks/` (e.g.
-`.kiro/hooks/check-project-on-save.json`). Now every save re-validates your site — instant
-feedback.
-
-:::warning Hooks run actions automatically
-Because hooks can run commands, only enable ones you understand. Review a hook's `command`
-before adding it.
+:::warning Hooks run actions automatically, so read them first
+This is the one genuinely important safety note in this lesson. Because a hook can run shell commands
+on your behalf, without asking each time, you should only enable hooks you understand. Before adding
+any hook, read its `command` field and be sure you're comfortable with what it does. A hook is a
+convenience you've granted; treat it with the same care you'd give any automation that can run code.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I can read a hook's trigger, matcher, and action.
 - [ ] I know hooks live in `.kiro/hooks/` as JSON.
 - [ ] I can name a few common triggers.
 
-## 🧪 Demo / Try it
+## Try it
 
-Copy the example hook into `.kiro/hooks/` in your project workspace, then save a file in
-`project/`. The static-site check runs automatically — try breaking the HTML to see it complain.
+Copy the example hook into `.kiro/hooks/` in your project workspace, then save a file in `project/`.
+The static-site check runs on its own. For the full effect, deliberately break the HTML (delete a
+closing tag) and save again to watch the hook catch it immediately. That instant feedback loop is the
+whole appeal.
 
-## ➡️ Next
+## Next
 
-Prove it: **[🧪 Lab: author a steering file](./lab.md)**.
+Now prove it: **[Lab: author a steering file](./lab.md)**.

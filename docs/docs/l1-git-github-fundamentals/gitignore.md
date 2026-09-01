@@ -3,37 +3,38 @@ id: l1-gitignore
 title: Ignoring Files with .gitignore
 sidebar_label: 4. .gitignore
 sidebar_position: 5
-description: Use a .gitignore file to keep generated files and secrets out of version control.
+description: Why some files should never be committed, how to write .gitignore patterns, and what to do if you've already committed something you shouldn't have.
 ---
 
 # Ignoring Files with .gitignore
 
 > **Level:** L1 · **Estimated time:** 10 min · **Prerequisites:** remotes lesson
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand why some files have no business being in version control, learn to write a
+`.gitignore` file and its patterns, and know how to verify that a file is actually being ignored.
 
-- Explain why some files should *not* be committed
-- Create a `.gitignore` file and write patterns
-- Verify a file is being ignored
+## Why you'd ever want to ignore a file
 
-## 📖 Lesson
+It's tempting to think "commit everything, just in case," but plenty of files actively make a repo
+worse when they're tracked:
 
-### Why ignore files?
+- **Generated output**, like a `build/` folder, can always be re-created from your source. Committing
+  it just adds noise and merge conflicts.
+- **Dependencies**, like `node_modules/`, are enormous and reinstallable. There's no reason to carry
+  thousands of files you didn't write.
+- **Secrets**, like `.env` files holding passwords or API keys, must *never* be committed. Once a
+  secret lands in history, treat it as leaked.
+- **OS and editor clutter**, like `.DS_Store` on macOS or `Thumbs.db` on Windows, is noise that has
+  nothing to do with your project.
 
-Not everything belongs in version control:
+The rule of thumb: if a file is generated, reinstallable, secret, or machine-specific, keep it out.
 
-- **Generated output** (e.g. build folders) — it can be re-created, so committing it just adds
-  noise.
-- **Dependencies** (e.g. `node_modules/`) — huge and reinstallable.
-- **Secrets** (e.g. `.env` files with passwords or API keys) — must *never* be committed.
-- **OS/editor junk** (e.g. `.DS_Store`, `Thumbs.db`).
+## The `.gitignore` file
 
-### The `.gitignore` file
-
-Create a file named exactly `.gitignore` in your repository root. Each line is a pattern for
-paths Git should ignore:
+Create a file named exactly `.gitignore` (yes, with the leading dot) in your repository root. Each
+line is a pattern describing paths Git should leave alone:
 
 ```gitignore
 # Dependencies
@@ -52,42 +53,52 @@ dist/
 Thumbs.db
 ```
 
-Pattern quick reference:
+A few patterns cover most needs:
 
 | Pattern | Matches |
 |---------|---------|
-| `node_modules/` | a folder named `node_modules` anywhere |
+| `node_modules/` | a folder named `node_modules`, anywhere in the repo |
 | `*.log` | any file ending in `.log` |
 | `build/` | a folder named `build` |
-| `!keep.log` | *un*-ignores `keep.log` (exception) |
+| `!keep.log` | *un*-ignores `keep.log`, an exception to a broader rule above it |
 
-### Verify it works
+That last one surprises people: `.gitignore` supports exceptions with a leading `!`, so you can
+ignore a whole category and then rescue one specific file from it.
+
+## Verify it actually works
+
+Don't take it on faith. Create a file that should be ignored and check:
 
 ```bash
 echo "secret=123" > .env
 git status
 ```
 
-If `.env` is correctly ignored, it will **not** appear in `git status` as something to commit.
-You can also ask Git directly:
+If your `.env` rule is working, that file will *not* show up in `git status` as something waiting to
+be committed. You can also ask Git directly, which is handy when a pattern isn't behaving:
 
 ```bash
 git check-ignore -v .env
 ```
 
-:::warning Already committed by accident?
-`.gitignore` only ignores files Git isn't already tracking. If you committed a secret, ignoring
-it later is not enough — you must remove it from tracking (`git rm --cached .env`), commit, and
-rotate the secret (treat it as leaked).
+That command tells you which line of which `.gitignore` is responsible for ignoring a file, which
+saves a lot of guessing.
+
+:::warning If you've already committed something by accident
+Here's the catch that bites people: `.gitignore` only affects files Git isn't *already* tracking.
+If you committed a secret and then added it to `.gitignore`, the secret is still in your history and
+still exposed. You have to stop tracking it (`git rm --cached .env`), commit that removal, and then,
+crucially, rotate the secret itself. A leaked key is leaked the moment it's pushed; deleting it later
+doesn't un-leak it.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I created a `.gitignore` with at least one pattern.
-- [ ] A file matching a pattern does **not** show up in `git status`.
-- [ ] I know secrets must never be committed.
+- [ ] A file matching a pattern does **not** appear in `git status`.
+- [ ] I understand that secrets must never be committed.
 
-## 🧪 Demo / Try it
+## Try it
 
 ```bash
 printf "node_modules/\n.env\n" > .gitignore
@@ -96,8 +107,9 @@ echo "TOKEN=abc" > .env
 git status
 ```
 
-Only `.gitignore` should appear as a new file — `node_modules/` and `.env` are ignored.
+Only `.gitignore` itself should show up as a new file. The `node_modules/` folder and the `.env`
+file are both invisible to Git, exactly as intended.
 
-## ➡️ Next
+## Next
 
-Time to prove your skills: **[🧪 Lab: your first graded exercise](./lab.md)**.
+Time to put it all together and earn a grade: **[Lab: your first graded exercise](./lab.md)**.

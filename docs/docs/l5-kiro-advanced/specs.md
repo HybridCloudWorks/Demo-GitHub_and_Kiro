@@ -3,27 +3,25 @@ id: l5-specs
 title: Spec-Driven Development
 sidebar_label: 2. Specs
 sidebar_position: 3
-description: Plan and build features deliberately with Kiro specs — requirements, design, tasks.
+description: Plan and build features deliberately with Kiro specs, moving from requirements to design to tasks instead of one hopeful giant prompt.
 ---
 
 # Spec-Driven Development
 
 > **Level:** L5 · **Estimated time:** 18 min · **Prerequisites:** steering files
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand what a **spec** is and its three parts, read a requirements-to-design-to-tasks flow,
+and use a spec to implement a feature one step at a time.
 
-- Explain what a **spec** is and its three parts
-- Read a requirements → design → tasks flow
-- Use a spec to implement a feature step by step
+## What a spec is, and why not just prompt
 
-## 📖 Lesson
-
-### What is a spec?
-
-A **spec** is a structured way to build a feature with Kiro. Instead of one big prompt, you
-capture the feature as three documents in `.kiro/specs/<feature-name>/`:
+You *can* ask Kiro to "build me a contact form" in one big prompt, and for tiny changes that's fine.
+But for anything with a bit of substance, that approach tends to produce a wall of code you then have
+to review all at once, hoping it matches what you had in mind. A **spec** is the more deliberate
+alternative. It captures a feature as three documents in `.kiro/specs/<feature-name>/`, each answering
+a different question:
 
 ```mermaid
 graph LR
@@ -34,50 +32,54 @@ graph LR
 
 | File | Purpose |
 |------|---------|
-| `requirements.md` | User stories and acceptance criteria — *what* and *why* |
-| `design.md` | The technical approach — *how* |
+| `requirements.md` | User stories and acceptance criteria: the *what* and the *why* |
+| `design.md` | The technical approach: the *how* |
 | `tasks.md` | A checklist of small, ordered implementation steps |
 
-### Why bother?
+## Why the extra structure is worth it
 
-- **Clarity:** you think through the change before writing code.
-- **Control:** you implement one task at a time and review each.
-- **Traceability:** tasks link back to requirements, so nothing is missed.
+The three documents buy you three things that a single prompt can't. You get **clarity**, because
+writing down what you actually want forces you to think the change through before any code exists. You
+get **control**, because you implement one task at a time and review each in isolation rather than
+facing a huge diff. And you get **traceability**, because each task points back to the requirement it
+satisfies, so nothing quietly falls through the cracks.
 
-This is ideal for anything non-trivial — and a fantastic habit even on small features.
+It's ideal for anything non-trivial, and honestly it's a good habit even on small features, in the
+same way writing an issue before coding is.
 
-### A real example in this repo
+## The example already in this repo
 
 The [`.kiro/specs/contact-section/`](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/tree/main/.kiro/specs/contact-section)
-folder contains a complete spec for adding a Contact section to the project:
+folder holds a complete, real spec for adding a Contact section to the project. Inside you'll find
+`requirements.md` with two requirements and their acceptance criteria, `design.md` describing the exact
+markup and styling approach, and `tasks.md` breaking the work into four ordered tasks, each linked back
+to a requirement.
 
-- `requirements.md` — two requirements with acceptance criteria.
-- `design.md` — the exact markup and styling approach.
-- `tasks.md` — four ordered tasks, each linked to requirements.
+## How you actually work through it
 
-### Working through it
+With a spec open, the rhythm is simple and calming: implement **one task**, verify it works, check it
+off, and move to the next. Because each task references the requirements it satisfies, you always know
+*why* you're doing the thing in front of you, which keeps you from wandering off into unrelated
+"while I'm here" changes.
 
-With a spec open, you implement **one task at a time**: do the task, verify it, check it off,
-then move on. Each task references the requirements it satisfies, so you always know *why*
-you're doing it.
-
-:::note Spec files can reference others
-Like steering, spec files can include `#[[file:...]]` references — handy for pointing at an API
-schema or a design doc.
+:::note Specs can reference other files too
+Just like steering, spec files support `#[[file:...]]` references, which is handy for pointing at an
+API schema or a design doc so it informs the work without being copied in.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
-- [ ] I can name the three spec files and their purpose.
+- [ ] I can name the three spec files and what each is for.
 - [ ] I can read acceptance criteria and map a task to them.
-- [ ] I understand implementing one task at a time.
+- [ ] I understand the "implement one task at a time" rhythm.
 
-## 🧪 Demo / Try it
+## Try it
 
-Open the three files in `.kiro/specs/contact-section/`. Then implement **Task 1** (add the
-Contact section markup) in `project/index.html`, following the design. Verify with
-`node project/scripts/check-static-site.js`.
+Open the three files in `.kiro/specs/contact-section/` and read them in order. Then implement **Task 1**
+(adding the Contact section markup) in `project/index.html`, following the design doc rather than
+improvising. Verify your work with `node project/scripts/check-static-site.js`. Notice how much easier
+the change is when someone (past you, via the spec) already decided what "done" looks like.
 
-## ➡️ Next
+## Next
 
 **[Agent hooks](./hooks.md)**.

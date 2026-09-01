@@ -3,48 +3,49 @@ id: l7-codespaces
 title: Codespaces
 sidebar_label: 4. Codespaces
 sidebar_position: 5
-description: Develop in a cloud environment straight from your repository.
+description: Develop in a full cloud environment launched straight from your repository, and make it reproducible for everyone with a devcontainer.
 ---
 
 # Codespaces
 
 > **Level:** L7 · **Estimated time:** 15 min · **Prerequisites:** a GitHub repo
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand what a **Codespace** is, launch one for your repository, and customize it with a
+`devcontainer.json` so everyone who opens it gets the same setup.
 
-- Explain what a **Codespace** is
-- Launch one for your repository
-- Customize it with a `devcontainer.json`
+## What a Codespace is
 
-## 📖 Lesson
+A **Codespace** is a complete development environment that runs **in the cloud**, created from your
+repository. It gives you an editor, a terminal, and your code, all reachable from a browser, with
+nothing to install on your own machine. That's genuinely useful in a few situations: trying a project
+from a borrowed or locked-down computer, onboarding a new contributor in minutes instead of an
+afternoon of "install this, now install that," or just getting a clean environment when your local one
+has drifted into a strange state.
 
-### What is a Codespace?
+## Launching one
 
-A **Codespace** is a full development environment that runs **in the cloud**, created from your
-repository. It gives you an editor, a terminal, and your code — reachable from a browser — with
-nothing to install locally. Great for trying a project on any machine, or onboarding quickly.
-
-### Launching one
-
-On your repo, select **Code → Codespaces → Create codespace on main**. GitHub spins up a
-container, clones your repo, and opens an editor. You can run the same commands you use locally:
+On your repo, choose **Code → Codespaces → Create codespace on main**. GitHub spins up a container,
+clones your repo into it, and opens an editor. From there you run the same commands you'd run locally:
 
 ```bash
 node project/scripts/check-static-site.js
 python3 -m http.server 8000
 ```
 
-:::note Free minutes
-Codespaces includes a monthly free allowance for personal accounts; beyond that it's billed by
-usage. For light course work you'll typically stay within the free tier — check the current
-limits in your account.
+That's the point: it's not a different way of working, just the same workflow hosted elsewhere.
+
+:::note About the free allowance
+Codespaces includes a monthly free allowance for personal accounts, and beyond that it's billed by
+usage. For the light work in this course you'll typically stay comfortably within the free tier, but
+it's worth checking the current limits in your account so a long session doesn't surprise you.
 :::
 
-### Customizing with a dev container
+## Making it reproducible with a dev container
 
-Add a `.devcontainer/devcontainer.json` to define the tools your Codespace should have:
+The real power shows up when you add a `.devcontainer/devcontainer.json` that declares the tools your
+Codespace should have:
 
 ```json
 {
@@ -57,25 +58,29 @@ Add a `.devcontainer/devcontainer.json` to define the tools your Codespace shoul
 }
 ```
 
-Now anyone who opens a Codespace gets Node 20 and the docs dependencies installed automatically —
-a reproducible environment for every contributor.
+With that file committed, anyone who opens a Codespace on the repo automatically gets Node 20 and the
+docs dependencies installed, with no manual setup and no "works on my machine" drift. That
+reproducibility is the same idea as CI, applied to the development environment itself: the setup is
+written down as code, so it's the same for everyone, every time.
 
-### Codespaces + Kiro
+## Codespaces and Kiro
 
-The same Git/GitHub habits apply in a Codespace: branch, commit, push, PR. It's another place to
-do the exact workflow you've practiced — just hosted in the cloud.
+Everything you've practiced still applies here: branch, commit, push, open a PR. A Codespace is simply
+another place to run the exact workflow you already know, just hosted in the cloud rather than on your
+laptop.
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I can explain what a Codespace is.
-- [ ] I launched a Codespace (or know the steps).
-- [ ] I understand a `devcontainer.json` customizes the environment.
+- [ ] I launched a Codespace, or I know the exact steps to.
+- [ ] I understand that a `devcontainer.json` customizes the environment.
 
-## 🧪 Demo / Try it
+## Try it
 
-Launch a Codespace on your repo and run `node project/scripts/check-static-site.js` in its
-terminal. Same project, running in the cloud.
+Launch a Codespace on your repo and run `node project/scripts/check-static-site.js` in its terminal.
+Same project, same command, same result, but running on a machine in the cloud that you didn't have to
+set up. That's the whole promise in one small demonstration.
 
-## ➡️ Next
+## Next
 
-Bring it all together: **[🏆 Capstone](./capstone.md)**.
+Now bring the entire course together: **[🏆 Capstone](./capstone.md)**.

@@ -3,32 +3,36 @@ id: l5-kiro-advanced-overview
 title: "L5: Kiro Advanced Authoring (overview)"
 sidebar_label: Overview
 sidebar_position: 1
-description: Steering files, spec-driven development, and agent hooks.
+description: The three authoring features that make Kiro a tailored teammate, steering files, spec-driven development, and agent hooks, with working examples in this repo.
 ---
 
 # L5 · Kiro Advanced Authoring
 
 > **Level:** L5 · **Estimated time:** 10 min · **Prerequisites:** finished Level 4
 
-You can build and ship. Now make **Kiro itself** smarter and more consistent. This level covers
-the three big authoring features that turn Kiro from a helpful assistant into a tailored teammate:
-**steering**, **specs**, and **hooks** — with real, working examples in this repo's `.kiro/`
-folder.
+You can build and ship. This level is about making **Kiro itself** smarter, more consistent, and
+shaped to how you actually work. There are three features that do most of the heavy lifting here:
+**steering** teaches Kiro your project's rules once so you stop repeating them, **specs** turn a
+vague "build me a feature" into a deliberate plan, and **hooks** automate actions when things happen
+in your workspace.
 
-## 🎯 What you'll achieve in Level 5
+The nice thing about this level is that every concept has a real, working example already sitting in
+this repo's `.kiro/` folder, so you're not learning from toy snippets.
 
-- Write a **steering file** to give Kiro persistent project rules
-- Drive a feature with a **spec** (requirements → design → tasks)
-- Understand **agent hooks** that automate actions on events
-- Extend the project (a Contact section) the spec-driven way (`milestone-l5`)
+## What you'll be able to do by the end
 
-## 🧭 The lessons in this level
+- Write a **steering file** that gives Kiro persistent project rules
+- Drive a feature with a **spec**, moving from requirements to design to tasks
+- Read and reason about **agent hooks** that run actions on events
+- Extend the project (a Contact section) the spec-driven way and tag `milestone-l5`
+
+## The lessons in this level
 
 1. [Steering files](./steering.md)
 2. [Spec-driven development](./specs.md)
 3. [Agent hooks](./hooks.md)
-4. [🧪 Lab: author a steering file](./lab.md)
+4. [Lab: author a steering file](./lab.md)
 
-## ➡️ Next
+## Next
 
 Start with **[Steering files](./steering.md)**.

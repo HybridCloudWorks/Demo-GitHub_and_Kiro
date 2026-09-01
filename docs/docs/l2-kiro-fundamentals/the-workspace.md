@@ -3,59 +3,63 @@ id: l2-the-workspace
 title: The Kiro Workspace
 sidebar_label: 1. The workspace
 sidebar_position: 2
-description: Open a project folder in Kiro and understand what the workspace is.
+description: Open a project folder as a Kiro workspace, learn the layout, and understand exactly what Kiro can see and do inside it.
 ---
 
 # The Kiro Workspace
 
 > **Level:** L2 · **Estimated time:** 10 min · **Prerequisites:** Kiro installed (Level 0)
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll open a folder as a Kiro **workspace**, learn to find the file explorer, editor, and chat, and
+understand the boundary of what Kiro can and can't see.
 
-- Open a folder as a Kiro **workspace**
-- Identify the file explorer, editor, and chat areas
-- Explain what Kiro can "see" and do in a workspace
+## What a workspace is (and why the boundary matters)
 
-## 📖 Lesson
+A **workspace** is simply the project folder you currently have open. That sounds trivial, but it's
+the single most important concept for working with Kiro well. The workspace defines Kiro's context:
+the files it can read, the code it can edit, and where any commands run. Kiro doesn't roam your
+whole hard drive; it works inside the folder you've opened. Knowing that boundary is what lets you
+trust it, and it's why the answers you get are grounded in *your* actual files rather than generic
+guesses.
 
-### What a workspace is
-
-A **workspace** is simply the project folder you're working in. When you open a folder in Kiro,
-it becomes the context for everything: the files Kiro can read, the code it can edit, and the
-place commands run.
-
-### Opening a workspace
+## Opening a workspace
 
 1. Launch Kiro.
-2. Choose **Open Folder** and select a project directory (for this course, the folder where you
-   cloned your course repository, or a new folder for the project).
-3. If asked to **trust** the folder, confirm — this lets Kiro read and modify files there.
+2. Choose **Open Folder** and pick a project directory. For this course, that's the folder where you
+   cloned your course repository, or a fresh folder if you're starting the project from scratch.
+3. If Kiro asks whether you **trust** the folder, confirm it. That trust prompt is what grants Kiro
+   permission to read and modify files there, so it's asking on purpose. Only trust folders you own
+   and understand.
 
-### The main areas
+## Finding your way around
 
-- **Explorer** — a tree of your files and folders. Click a file to open it.
-- **Editor** — where you read and edit file contents.
-- **Chat** — where you talk to Kiro in plain language to ask questions or request changes.
-- **Terminal** — an integrated command line for running things like `git` or a local server.
+Four areas do most of the work, and you'll bounce between them constantly:
 
-:::tip Keep one project per workspace
-Working with a single project folder at a time keeps Kiro's context focused and its suggestions
-relevant.
+The **explorer** is the tree of your files and folders down the side; click any file to open it. The
+**editor** is the main pane where you read and edit contents. The **chat** is where you talk to Kiro
+in plain language to ask questions or request changes. And the **terminal** is an integrated command
+line, so you can run `git`, start a local server, or run a grader without leaving Kiro.
+
+:::tip One project per workspace
+Resist the urge to open a giant folder containing several unrelated projects. Keeping a single
+project per workspace keeps Kiro's context focused, which directly makes its suggestions sharper and
+more relevant. A tighter workspace is a smarter assistant.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I opened a folder as a workspace in Kiro.
-- [ ] I can find the explorer, editor, and chat.
-- [ ] I understand Kiro acts within the open workspace.
+- [ ] I can find the explorer, the editor, and chat.
+- [ ] I understand that Kiro acts within the open workspace, not outside it.
 
-## 🧪 Demo / Try it
+## Try it
 
-Open the folder where you cloned your course repository. Browse the file tree and open
-`README.md` in the editor. You're ready to start talking to Kiro.
+Open the folder where you cloned your course repository. Browse the file tree for a minute to get a
+feel for the layout, then open `README.md` in the editor. That's all it takes to be ready for your
+first real conversation with Kiro.
 
-## ➡️ Next
+## Next
 
 **[Chatting with Kiro](./chatting-with-kiro.md)**.

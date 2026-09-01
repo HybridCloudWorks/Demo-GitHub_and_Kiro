@@ -3,27 +3,23 @@ id: l4-deploy-the-app
 title: Deploy the App to GitHub Pages
 sidebar_label: 3. Deploy the app
 sidebar_position: 4
-description: Automatically publish your static app to GitHub Pages — free, public hosting.
+description: Automatically publish your static app to GitHub Pages for free, and understand why this repo's app-deploy workflow is set up the way it is.
 ---
 
 # Deploy the App to GitHub Pages
 
 > **Level:** L4 · **Estimated time:** 25 min · **Prerequisites:** your first workflow
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll learn to deploy a static site to **GitHub Pages** with a workflow, enable Pages for a
+repository, and reach your app at its public `github.io` URL.
 
-- Deploy a static site to **GitHub Pages** with a workflow
-- Enable Pages for your repository
-- Reach your app at its public `github.io` URL
+## A quick recap of the hosting
 
-## 📖 Lesson
-
-### The hosting recap
-
-**GitHub Pages** hosts static sites **for free** on public repositories — no server, no
-self-hosting. Your workflow builds/packages the site and hands it to Pages, which serves it at:
+**GitHub Pages** hosts static sites for free on public repositories. There's no server to run and
+nothing to self-host: your workflow builds and packages the site, hands it to Pages, and Pages serves
+it at a predictable address:
 
 ```text
 https://<your-username>.github.io/<your-repo>/
@@ -37,44 +33,49 @@ graph LR
     D --> E[Live at username.github.io/repo]
 ```
 
-### The deploy workflow
+## The deploy workflow
 
 The reference workflow lives at
 [`.github/workflows/deploy-app.yml`](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/blob/main/.github/workflows/deploy-app.yml).
-Its key steps:
+Read through it and you'll recognize the shape from the last lesson. Its key steps are: **check out**
+your code, **validate** the static site with `node project/scripts/check-static-site.js`, **configure
+Pages** and **upload** the `project/` folder as a Pages artifact, and finally **deploy** that artifact
+with `actions/deploy-pages`. The validation step is deliberately before the deploy, so a broken site
+never gets published in the first place.
 
-1. **Check out** your code.
-2. **Validate** the static site (`node project/scripts/check-static-site.js`).
-3. **Configure Pages**, then **upload** the `project/` folder as a Pages artifact.
-4. **Deploy** the artifact with `actions/deploy-pages`.
-
-:::warning One Pages site per repository
-A repository can host only **one** GitHub Pages site. In this course monorepo, Pages is already
-used by the **course website**. That's why `deploy-app.yml` is **manual** here — it's the
-reference you copy into your **own** app repository, where it runs automatically on push.
+:::warning A repository hosts exactly one Pages site
+This is the detail that confuses people in this course, so it's worth stating plainly: a single
+repository can host only **one** GitHub Pages site. In this course monorepo, that one slot is already
+taken by the **course website** you're reading right now. That's precisely why `deploy-app.yml` here
+is set to run **manually** rather than on every push. It's meant to be the reference you copy into
+your **own** app repository, where nothing else is competing for the Pages slot and it can run
+automatically.
 :::
 
-### Publishing your app for real
+## Publishing your own app for real
 
-The clean way to ship *your* app:
+When you want *your* app on the internet, the clean approach is to give it its own repository:
 
-1. Create a **new** repository just for your app (or push `project/` to its own repo).
-2. Add `deploy-app.yml`, changing the trigger to run on push to `main` and the `path` to match
-   where your files live.
-3. **Settings → Pages → Source: GitHub Actions.**
-4. Push. Your app goes live at your `github.io` URL. 🎉
+1. Create a **new** repository just for your app, or push `project/` out to a repo of its own.
+2. Add `deploy-app.yml`, changing the trigger to run on push to `main` and adjusting the `path` to
+   match where your files actually live.
+3. Go to **Settings → Pages → Source: GitHub Actions** to point Pages at your workflow.
+4. Push, and your app goes live at its `github.io` URL.
 
-## ✅ Checkpoint
+That's genuinely the whole thing. Once it's set up, publishing a change is just merging to `main`.
 
-- [ ] I understand a repo hosts only one Pages site.
-- [ ] I can read the deploy workflow's steps.
+## Quick self-check
+
+- [ ] I understand that a repo hosts only one Pages site.
+- [ ] I can read the deploy workflow's steps and say what each does.
 - [ ] I deployed a static app (this project or my own copy) and opened its public URL.
 
-## 🧪 Demo / Try it
+## Try it
 
-In your app repo, enable Pages (Source: GitHub Actions) and run the deploy workflow. Visit the
-URL it reports — your app is on the internet, for free.
+In your app repo, enable Pages with Source set to GitHub Actions, then run the deploy workflow. Open
+the URL it reports in the run summary. Seeing your own work served from a real, public address, at no
+cost, is a genuinely good moment; don't rush past it.
 
-## ➡️ Next
+## Next
 
-Prove your workflow skills: **[🧪 Lab: write a CI workflow](./lab.md)**.
+Prove your workflow skills: **[Lab: write a CI workflow](./lab.md)**.
