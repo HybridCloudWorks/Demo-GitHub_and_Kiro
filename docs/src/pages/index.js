@@ -99,11 +99,10 @@ function Levels() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  // No `title` prop: Layout defaults to the site title alone, avoiding a
+  // duplicated "<title> | <title>" browser tab.
   return (
-    <Layout
-      title={siteConfig.title}
-      description="A complete, hands-on course for learning GitHub and Kiro together — from Level 0 to advanced.">
+    <Layout description="A complete, hands-on course for learning GitHub and Kiro together — from Level 0 to advanced.">
       <Hero />
       <main>
         <Features />

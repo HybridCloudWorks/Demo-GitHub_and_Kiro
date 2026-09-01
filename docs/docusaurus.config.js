@@ -84,7 +84,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/social-card.svg',
+      // Raster PNG for social/OG previews — many renderers (Slack, Twitter,
+      // iMessage) don't reliably fetch SVG og:image assets. The source SVG is
+      // kept in static/img/social-card.svg for editing/regeneration.
+      image: 'img/social-card.png',
       navbar: {
         title: 'GitHub + Kiro',
         logo: {
