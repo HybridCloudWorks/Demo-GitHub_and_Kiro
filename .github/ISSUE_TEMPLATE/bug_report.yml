@@ -1,0 +1,42 @@
+name: 🐛 Bug report
+description: Report something that isn't working (a broken link, a failing lab, a site issue).
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! Please give us enough detail to reproduce the problem.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: When I ran … I expected … but instead …
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact steps (commands, page, or lab).
+      placeholder: |
+        1. Go to '…'
+        2. Run '…'
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Where?
+      description: Page URL, file path, or lab id (e.g. `labs/l4`, `/docs/level-4`).
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Environment / context
+      description: OS, browser, Node version, or anything relevant.
+    validations:
+      required: false

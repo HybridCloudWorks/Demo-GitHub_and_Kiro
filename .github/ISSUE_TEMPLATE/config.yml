@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🧪 Working through a lab?
+    url: https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/tree/main/labs
+    about: Lab instructions, starters, and solutions live here. Run the grader locally before opening an issue.
+  - name: ❓ Question or troubleshooting
+    url: https://hybridcloudworks.github.io/Demo-GitHub_and_Kiro/docs/faq
+    about: Check the course FAQ & Troubleshooting page first.
