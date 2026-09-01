@@ -1,0 +1,41 @@
+name: Docs Build
+
+# Builds the Docusaurus site on pull requests (and pushes to main) as a required
+# status check. This is deploy-free: it only verifies the site compiles with no
+# broken links (onBrokenLinks: 'throw'). Deployment itself lives in deploy-docs.yml.
+#
+# The job is named "Build site" so it satisfies the branch ruleset's required
+# status check of the same name on pull requests, where the deploy workflow does
+# not run.
+
+on:
+  # Runs on every PR (no path filter) so the required "Build site" status check
+  # always reports. A path-filtered required check would never run on unrelated
+  # PRs and would leave them permanently "pending" (a required-check deadlock).
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install dependencies
+        working-directory: docs
+        run: npm ci
+
+      - name: Build the site (fails on broken links)
+        working-directory: docs
+        run: npm run build
