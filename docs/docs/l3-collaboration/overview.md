@@ -3,33 +3,38 @@ id: l3-collaboration-overview
 title: "L3: Collaboration (overview)"
 sidebar_label: Overview
 sidebar_position: 1
-description: Issues, pull requests, code review, and branch protection.
+description: Doing it the professional way with issues, pull requests, code review, and branch protection, then shipping a real feature to the project.
 ---
 
 # L3 · Collaboration
 
 > **Level:** L3 · **Estimated time:** 10 min · **Prerequisites:** finished Level 2
 
-You can now commit, branch, and push. This level is about doing it **the professional way** —
-proposing changes with **pull requests**, tracking work with **issues**, reviewing code, and
-protecting your `main` branch. You'll also add a real feature to the project through a PR.
+You can commit, branch, and push. That's enough to work alone. But almost all real software gets
+built by more than one person, and even solo work benefits enormously from the habits teams use.
+This level is about doing the work *the professional way*: proposing changes with **pull requests**,
+tracking what needs doing with **issues**, reviewing code before it lands, and protecting your
+`main` branch so mistakes can't slip in unnoticed.
 
-## 🎯 What you'll achieve in Level 3
+By the end you'll have added a genuine feature to the project through the same workflow a
+professional team would use.
 
-- Track work with **issues**
-- Propose changes with **pull requests (PRs)**
-- **Review** a PR and leave feedback
-- Turn on basic **branch protection**
-- Add a project feature via a PR (`milestone-l3`)
+## What you'll be able to do by the end
 
-## 🧭 The lessons in this level
+- Track work with **issues** so nothing lives only in your head
+- Propose changes with **pull requests** and write descriptions people actually want to read
+- **Review** a change and leave feedback that's useful rather than just polite
+- Turn on basic **branch protection** to keep `main` trustworthy
+- Add a project feature through a PR and tag it `milestone-l3`
+
+## The lessons in this level
 
 1. [Issues: tracking work](./issues.md)
 2. [Pull requests](./pull-requests.md)
 3. [Code review](./code-review.md)
 4. [Branch protection basics](./branch-protection.md)
-5. [🧪 Lab: add a feature via a PR](./lab.md)
+5. [Lab: add a feature via a PR](./lab.md)
 
-## ➡️ Next
+## Next
 
 Start with **[Issues: tracking work](./issues.md)**.

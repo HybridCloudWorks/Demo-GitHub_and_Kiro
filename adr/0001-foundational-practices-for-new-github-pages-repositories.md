@@ -125,6 +125,19 @@ template and structured issue forms).
 - **Consequence:** Contributions arrive well-formed and reach the correct reviewers by default;
   governance is codified rather than tribal knowledge.
 
+### 9. A documented security-reporting policy
+
+Provide a `SECURITY.md` describing how to report a vulnerability privately, what to include, and
+what response to expect; enable private vulnerability reporting.
+
+- **Why:** Without a stated channel, a person who finds a problem either discloses it publicly
+  (exposing users before a fix exists) or stays silent. A clear, private path makes responsible
+  disclosure the path of least resistance. Even for a static site the risk is real — the most
+  common incident is a secret committed to history — and the policy sets expectations on both
+  sides.
+- **Consequence:** Vulnerabilities are surfaced privately and handled predictably instead of
+  landing in a public issue or going unreported.
+
 ## Options considered
 
 For each concern, the practical alternatives were:
@@ -139,6 +152,7 @@ For each concern, the practical alternatives were:
 | Environment | Committed dev container | "Read the setup docs" | Setup drift and slow, error-prone onboarding |
 | Work queue | Seeded, labeled issues | Empty tracker / private task list | No on-ramp for contributors; opaque priorities |
 | Governance | CODEOWNERS + issue/PR templates | Freeform issues/PRs; manual reviewer pings | Inconsistent contributions; review routed by memory, easily missed |
+| Security reporting | `SECURITY.md` + private reporting | No stated policy | Reporters disclose publicly or not at all; no coordinated fix |
 
 A "do nothing / decide later" option was also considered and rejected: deferring these decisions
 simply pushes the same recurring cost onto every future contributor and every future repository.
@@ -171,9 +185,9 @@ simply pushes the same recurring cost onto every future contributor and every fu
 A new GitHub Pages repository is considered compliant with this ADR when it has: (1) an automated
 deploy workflow, (2) build + lint checks on pull requests, (3) branch protection requiring those
 checks, (4) a landing page and a descriptive README, (5) social/OG metadata, (6) a committed dev
-container, (7) a seeded issue backlog, and (8) repository governance (CODEOWNERS plus pull
-request and issue templates). Teams should template these so compliance is the default rather
-than an afterthought.
+container, (7) a seeded issue backlog, (8) repository governance (CODEOWNERS plus pull request and
+issue templates), and (9) a documented security-reporting policy (`SECURITY.md`). Teams should
+template these so compliance is the default rather than an afterthought.
 
 ## References
 

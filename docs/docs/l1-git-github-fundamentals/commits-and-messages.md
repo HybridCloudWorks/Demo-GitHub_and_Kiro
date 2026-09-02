@@ -3,32 +3,32 @@ id: l1-commits-and-messages
 title: Commits & Good Messages
 sidebar_label: 1. Commits & messages
 sidebar_position: 2
-description: How commits work and how to write commit messages your future self will thank you for.
+description: What a commit actually records, how to stage exactly the changes you mean to, and how to write commit messages that stay useful months later.
 ---
 
 # Commits & Good Messages
 
 > **Level:** L1 · **Estimated time:** 12 min · **Prerequisites:** finished Level 0
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand what a commit really records, learn to stage exactly the changes you want with
+`git add`, and pick up a commit-message style that keeps your history readable long after you've
+forgotten the details.
 
-- Describe what a commit records
-- Stage specific changes with `git add`
-- Write a clear, conventional commit message
+## What a commit actually records
 
-## 📖 Lesson
+A **commit** is a snapshot of the tracked files in your repository, bundled with a little
+metadata: who made it, when, and a **message** explaining the change. Each commit also points back
+to the one before it, and that chain of pointers is your project's **history**.
 
-### What a commit really records
+The part people underrate is the message. A year from now, the code will tell you *what* it does,
+but only the commit message can tell you *why* you changed it. That "why" is often the exact thing
+you'll be desperate to know when something breaks.
 
-A **commit** is a snapshot of the tracked files in your repository plus some metadata: who
-made it, when, and a **message** describing *why*. Each commit points to the one before it,
-forming your project's **history**.
+## The edit, add, commit loop
 
-### The edit → add → commit loop
-
-You already met this loop in Level 0. Let's reinforce it:
+You met this loop in Level 0. Here it is again, because it's worth having in your fingers:
 
 ```bash
 # 1. See what changed
@@ -41,53 +41,62 @@ git add index.html styles.css
 git commit -m "Add homepage heading and base styles"
 ```
 
-:::tip Stage everything at once
-`git add .` stages *all* changes in the current folder. Handy, but pause first and run
-`git status` so you know exactly what you're including.
+:::tip Staging everything, carefully
+`git add .` stages *every* change in the current folder at once. It's convenient, and you'll use it
+often, but get in the habit of running `git status` first so you know exactly what you're about to
+sweep in. More than one accidental secret or stray debug file has ended up committed because
+someone reached for `git add .` on autopilot.
 :::
 
-### Writing good commit messages
+## Writing commit messages that earn their keep
 
-A good message explains the change so a teammate (or future you) understands it at a glance.
+A good message lets a teammate (or you, six months from now) grasp a change at a glance without
+reading the diff. The widely used convention is simple:
 
-A widely used style:
-
-- A short **summary line** (about 50 characters), written in the imperative mood:
-  "Add", "Fix", "Update" — as if completing the sentence *"This commit will…"*.
-- Optionally, a blank line then a longer body explaining *why*.
+Write a short **summary line**, around 50 characters, in the imperative mood. Imperative just means
+you phrase it as a command: "Add", "Fix", "Update", as if you were finishing the sentence *"This
+commit will..."*. If the change needs more explanation, leave a blank line and then write a body
+that covers the *why*.
 
 ```text
 Fix broken link on the About page
 
-The footer linked to /about-us but the page lives at /about.
-Updated the link so the smoke test passes.
+The footer linked to /about-us, but the page actually lives at /about,
+so the smoke test kept failing. Updated the link to match.
 ```
 
-Compare:
+The difference between a lazy message and a good one is stark once you've had to dig through
+history:
 
-| ❌ Vague | ✅ Clear |
-|----------|----------|
+| Vague and useless | Clear and useful |
+|-------------------|------------------|
 | `stuff` | `Add contact form to homepage` |
 | `fix` | `Fix typo in navigation label` |
 | `changes` | `Update README with install steps` |
 
-### Seeing history
+The messages on the left aren't just unhelpful; they're actively misleading, because they all look
+identical in the log. The ones on the right let you find the commit you want in seconds.
+
+## Looking back through history
 
 ```bash
 git log --oneline       # compact, one line per commit
-git show                # details of the most recent commit
+git show                # full details of the most recent commit
 ```
 
-## ✅ Checkpoint
+`git log --oneline` is the view you'll live in. `git show` is what you reach for when you want to
+see exactly what a particular commit changed.
+
+## Quick self-check
 
 - [ ] I can stage specific files with `git add`.
 - [ ] I can write an imperative-mood summary line.
 - [ ] I can read history with `git log --oneline`.
 
-## 🧪 Demo / Try it
+## Try it
 
-In your `hello-git` repo from Level 0, make a change and commit it with a well-formed message,
-then inspect it:
+Head back to your `hello-git` repo from Level 0, make a change, and commit it with a properly
+formed message. Then inspect what you did:
 
 ```bash
 echo "## About" >> README.md
@@ -96,6 +105,9 @@ git commit -m "Add About section heading to README"
 git show --stat
 ```
 
-## ➡️ Next
+The `--stat` flag shows you which files changed and by how much, which is a nice quick summary of a
+commit's footprint.
 
-Learn to work on changes safely in parallel: **[Branches](./branches.md)**.
+## Next
+
+Now learn to work on changes in parallel without breaking your stable code: **[Branches](./branches.md)**.

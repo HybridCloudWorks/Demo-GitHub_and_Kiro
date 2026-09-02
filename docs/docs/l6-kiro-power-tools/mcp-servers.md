@@ -3,7 +3,7 @@ id: l6-mcp-servers
 title: MCP Servers
 sidebar_label: 1. MCP servers
 sidebar_position: 2
-description: Connect Kiro to external tools and data with Model Context Protocol servers.
+description: Connect Kiro to external tools and data with Model Context Protocol servers, from writing the config to calling a server's tools safely.
 ---
 
 # MCP Servers
@@ -11,31 +11,27 @@ description: Connect Kiro to external tools and data with Model Context Protocol
 > **Level:** L6 · **Estimated time:** 25 min · **Prerequisites:** finished Level 5;
 > a package runner such as `uvx` (Python) or `npx` (Node) installed
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand what **MCP** is and what an MCP server gives you, write an `mcp.json`
+configuration, and enable a server so you can call one of its tools.
 
-- Explain what **MCP** is and what an MCP server provides
-- Write an `mcp.json` configuration
-- Enable a server and call one of its tools
+## What MCP is, and why it matters
 
-## 📖 Lesson
+**MCP** stands for **Model Context Protocol**. It's an open standard that lets Kiro talk to external
+**servers** which provide extra **tools** and **data**: fetching a web page, reading a database,
+calling an API, and so on. The important shift in thinking is this: Kiro doesn't need to know how to
+do everything itself. Instead, MCP lets you *plug in* capabilities as you need them, the way you'd
+add apps to a phone rather than buying a new phone for each feature.
 
-### What is MCP?
+## Where the configuration lives
 
-**MCP** stands for **Model Context Protocol**. It's an open standard that lets Kiro talk to
-external **servers** that provide extra **tools** and **data** — for example, fetching a web
-page, reading a database, or calling an API. Instead of Kiro knowing how to do everything, MCP
-lets you *plug in* capabilities.
+MCP servers are configured in JSON, and there are two places to put that config depending on scope.
+A **workspace-level** config at `.kiro/settings/mcp.json` applies only to the current project, which
+is the right choice for project-specific tools. A **user-level** config in your global Kiro settings
+applies everywhere, which suits tools you always want available.
 
-### Where configuration lives
-
-MCP servers are configured in JSON:
-
-- **Workspace level:** `.kiro/settings/mcp.json` (applies to this project).
-- **User level:** your global Kiro settings (applies everywhere).
-
-### Anatomy of `mcp.json`
+## Reading an `mcp.json`
 
 ```json
 {
@@ -53,46 +49,55 @@ MCP servers are configured in JSON:
 | Field | Meaning |
 |-------|---------|
 | key (`"fetch"`) | a name you choose for the server |
-| `command` | how to launch it (e.g. `uvx`, `npx`) |
-| `args` | arguments passed to the command |
-| `disabled` | `true` to keep it configured but off |
-| `autoApprove` | tool names that can run without asking each time |
+| `command` | how to launch it, such as `uvx` or `npx` |
+| `args` | the arguments passed to that command |
+| `disabled` | set `true` to keep a server configured but switched off |
+| `autoApprove` | tool names allowed to run without asking you each time |
 
-:::tip Prerequisites
-`uvx` comes with [uv](https://docs.astral.sh/uv/) (Python). `npx` comes with Node.js. Install
-whichever your chosen server needs. The first run may download the server package.
+That `autoApprove` list is a convenience that trades a little safety for a lot less clicking. Keep
+it short, and only add tools you're genuinely happy to let run unprompted.
+
+:::tip What you need installed first
+`uvx` ships with [uv](https://docs.astral.sh/uv/) for Python; `npx` ships with Node.js. Install
+whichever your chosen server needs before you try to enable it. Be aware that the very first run of a
+server often downloads its package, so give it a moment the first time.
 :::
 
-### Enable and use
+## Enabling one and using it
 
 1. Add the server to `.kiro/settings/mcp.json`.
-2. Kiro picks it up (reconnect from the MCP view if needed — no restart required).
-3. Ask Kiro to use a tool the server provides, e.g. *"Fetch the page at example.com and
-   summarize it."* Kiro calls the server's `fetch` tool.
+2. Kiro picks up the change. If it doesn't connect immediately, reconnect from the MCP view; there's
+   no need to restart.
+3. Ask Kiro to use one of the server's tools in plain language, for example *"Fetch the page at
+   example.com and summarize it."* Behind the scenes, Kiro calls the server's `fetch` tool and works
+   with the result.
 
-### A ready example
+## The example shipped with this course
 
-This course ships a sample config at
+This course provides a sample config at
 [`labs/l6/examples/mcp.json`](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/blob/main/labs/l6/examples/mcp.json)
-with a `fetch` server (enabled) and a `filesystem` server (disabled). Copy it to
-`.kiro/settings/mcp.json` to try it.
+with a `fetch` server switched on and a `filesystem` server switched off. Copy it to
+`.kiro/settings/mcp.json` to try it, and note how the disabled server shows a legitimate reason to
+keep a config entry around without it being active.
 
 :::warning Only add servers you trust
-MCP servers run as real programs on your machine and may access data. Add servers from sources
-you trust, and keep `autoApprove` minimal.
+This is the safety point that matters most in this lesson. MCP servers are real programs that run on
+your machine and may access your data, so treat them the way you'd treat any software you install.
+Add servers only from sources you trust, and keep `autoApprove` as small as you reasonably can.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I can explain MCP in a sentence.
-- [ ] I wrote/edited an `mcp.json` with at least one server.
-- [ ] I called an MCP tool from Kiro (or understand how to).
+- [ ] I wrote or edited an `mcp.json` with at least one server.
+- [ ] I called an MCP tool from Kiro, or I understand exactly how to.
 
-## 🧪 Demo / Try it
+## Try it
 
-Copy the sample `mcp.json` into `.kiro/settings/`, ensure `uvx` is installed, and ask Kiro to
-fetch and summarize a public web page.
+Copy the sample `mcp.json` into `.kiro/settings/`, make sure `uvx` is installed, and ask Kiro to fetch
+and summarize a public web page. Watching Kiro reach out through a tool you configured is the moment
+MCP goes from an acronym to something you actually get.
 
-## ➡️ Next
+## Next
 
 **[Custom agents](./custom-agents.md)**.

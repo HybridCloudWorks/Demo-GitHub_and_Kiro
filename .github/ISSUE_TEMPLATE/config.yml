@@ -6,3 +6,6 @@ contact_links:
   - name: ❓ Question or troubleshooting
     url: https://hybridcloudworks.github.io/Demo-GitHub_and_Kiro/docs/faq
     about: Check the course FAQ & Troubleshooting page first.
+  - name: 🔒 Found a security issue?
+    url: https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/security/policy
+    about: Please report vulnerabilities privately — do not open a public issue.

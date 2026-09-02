@@ -3,66 +3,74 @@ id: l3-issues
 title: "Issues: Tracking Work"
 sidebar_label: 1. Issues
 sidebar_position: 2
-description: Use GitHub issues to track bugs, ideas, and tasks.
+description: Use GitHub issues to track bugs, ideas, and tasks, write ones that are actually actionable, and link them to the commits and PRs that resolve them.
 ---
 
 # Issues: Tracking Work
 
 > **Level:** L3 · **Estimated time:** 10 min · **Prerequisites:** finished Level 2
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll understand what a GitHub **issue** is for, learn to open one that someone could actually act
+on, and connect issues to the commits and pull requests that resolve them.
 
-- Explain what a GitHub **issue** is for
-- Open a clear, actionable issue
-- Reference and close issues from commits and PRs
+## What an issue is, and why it beats a sticky note
 
-## 📖 Lesson
+An **issue** is a tracked note attached to a repository: a bug report, a feature idea, a question,
+or a plain task. What makes it more useful than a note in your head or a sticky on your monitor is
+that it lives *with* the code, it's visible to everyone on the project, and it becomes a thread where
+the discussion, decisions, and eventual fix all stay attached to the thing they're about.
 
-### What is an issue?
+On a team, issues are how work gets organized and claimed. On a solo project, they're how you keep
+your future self honest about what you meant to do.
 
-An **issue** is a tracked note on a repository — a bug report, a feature idea, a question, or a
-task. Issues give your work a to-do list that lives with the code and that others can see and
-discuss.
+## Writing an issue someone can act on
 
-### Opening a good issue
+Go to the **Issues** tab on your repo and choose **New issue**. The difference between a useful issue
+and a useless one comes down to specifics. A good one has:
 
-On your repo, go to the **Issues** tab → **New issue**. A good issue has:
+A clear **title** that names the actual outcome, like "Add an 'About me' section to the homepage,"
+not "homepage stuff." A **description** covering *what* you want and *why*, and for bugs, the exact
+steps to reproduce the problem, because a bug nobody can reproduce is a bug nobody can fix. And
+optionally, **labels** like `bug`, `enhancement`, or `good first issue` to help sort and triage as
+the list grows.
 
-- **A clear title** — e.g. "Add an 'About me' section to the homepage".
-- **A description** — what and why, plus steps to reproduce for bugs.
-- **Labels** (optional) — e.g. `bug`, `enhancement`, `good first issue`.
+The test is simple: could someone who isn't you pick up this issue and know what "done" looks like?
+If not, add detail until they could.
 
-### Linking issues to your work
+## Linking issues to the work that closes them
 
-You can connect commits and PRs to issues:
+Issues get powerful once you connect them to your actual changes. You can mention an issue anywhere
+with `#123` and GitHub turns it into a link. Better still, you can use a **closing keyword** in a
+commit message or PR description so the issue closes itself automatically when the change merges:
 
-- Mention an issue with `#123` in a commit message or PR description.
-- Use a **closing keyword** to auto-close it when the PR merges:
+```text
+Fixes #123
+```
 
-  ```text
-  Fixes #123
-  ```
+`Closes #123` and `Resolves #123` do the same thing. This small habit means your issue list stays
+honest on its own, without you remembering to go tick things off.
 
-  (Also works: `Closes #123`, `Resolves #123`.)
-
-:::tip Issues before code
-Opening an issue *first* — even for your own solo project — helps you think through the change
-and gives you something to reference in your pull request.
+:::tip Open the issue before you write the code
+Even on a solo project, writing the issue *first* forces you to think the change through before you
+start typing, and it gives you something concrete to reference from the pull request. It feels like
+overhead the first time and pays for itself the first time you come back to a project after a month
+away.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
-- [ ] I opened an issue with a clear title and description.
+- [ ] I opened an issue with a clear title and a real description.
 - [ ] I know how to reference an issue with `#number`.
-- [ ] I know `Fixes #n` auto-closes an issue on merge.
+- [ ] I know that `Fixes #n` auto-closes an issue when a PR merges.
 
-## 🧪 Demo / Try it
+## Try it
 
-On your project repo, open an issue titled **"Add an About section to the homepage"** with a
-sentence describing what you want. You'll resolve it with a PR in the lab.
+On your project repo, open an issue titled **"Add an About section to the homepage"** with a sentence
+or two describing what you want and why. Leave it open; you'll resolve it with a pull request in the
+lab at the end of this level, and closing it that way is oddly satisfying.
 
-## ➡️ Next
+## Next
 
 **[Pull requests](./pull-requests.md)**.

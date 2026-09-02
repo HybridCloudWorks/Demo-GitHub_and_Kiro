@@ -3,38 +3,36 @@ id: l7-github-apps
 title: GitHub Apps & the Actions Marketplace
 sidebar_label: 3. GitHub Apps
 sidebar_position: 4
-description: Extend GitHub with Apps and reusable Actions from the marketplace.
+description: Extend GitHub with Apps that act as their own identity, and safely reuse published Actions from the marketplace in your workflows.
 ---
 
 # GitHub Apps & the Actions Marketplace
 
 > **Level:** L7 · **Estimated time:** 18 min · **Prerequisites:** GitHub Actions (L4)
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll be able to explain what a **GitHub App** is and how it differs from a personal token, install
+one from the Marketplace, and reuse published **Actions** in your workflows without reinventing them.
 
-- Explain what a **GitHub App** is and how it differs from a personal token
-- Install an App from the Marketplace
-- Reuse published **Actions** in your workflows
+## What a GitHub App is
 
-## 📖 Lesson
+A **GitHub App** is a first-class integration you install on your account or specific repositories.
+The cleanest way to understand it is by contrast with a personal access token. A token acts as *you*,
+with whatever access your account has; an App acts as **its own identity**, separate from any person.
+An App also gets **fine-grained permissions** that you review and approve at install time, rather than
+inheriting your whole account's reach, and it works with **short-lived tokens** issued per operation
+instead of one long-lived secret. That combination makes Apps both safer and clearer about who did
+what.
 
-### GitHub Apps
+You install Apps from the **Marketplace** for things like code coverage, project management, or CI
+helpers. Anything that's really a bot, such as something that comments on every PR, is almost always
+better implemented as an App than as a person's token.
 
-A **GitHub App** is a first-class integration you install on your account or repos. Compared to
-using a personal access token, an App:
+## Reusing Actions from the Marketplace
 
-- Acts as **its own identity** (not a person).
-- Has **fine-grained permissions** you approve at install time.
-- Gets a **short-lived token** per operation — more secure.
-
-You install Apps from the **Marketplace** (e.g. code coverage, project management, CI helpers).
-Some tasks (like a bot commenting on PRs) are best done by an App.
-
-### Reusing Actions from the Marketplace
-
-You've already reused Actions — every `uses:` line pulls a published action:
+You've actually been reusing published Actions since Level 4. Every `uses:` line in a workflow pulls in
+someone else's ready-made action:
 
 ```yaml
       - uses: actions/checkout@v4          # official
@@ -42,30 +40,36 @@ You've already reused Actions — every `uses:` line pulls a published action:
       - uses: actions/upload-pages-artifact@v3
 ```
 
-The **[GitHub Marketplace](https://github.com/marketplace?type=actions)** has thousands more.
+The **[GitHub Marketplace](https://github.com/marketplace?type=actions)** has thousands more, covering
+just about any CI task you can imagine, which means most of the time you're assembling existing pieces
+rather than writing automation from scratch.
 
-:::warning Pin what you trust
-Third-party actions run in your CI with access to your repo. Prefer official/verified actions,
-read what they do, and **pin versions** (a tag like `@v4`, or a commit SHA for extra safety)
-rather than tracking a moving branch.
+:::warning Pin the actions you trust, and know what they do
+This is the security point that matters. A third-party action runs *inside your CI* with access to
+your repository, so it's not neutral code. Prefer official or verified actions, take a minute to read
+what an action actually does before adding it, and **pin the version** you use, either a tag like
+`@v4` or, for extra safety, a specific commit SHA. Tracking a moving branch means a maintainer (or an
+attacker who compromises them) can change the code running in your pipeline without you noticing.
 :::
 
-### Building your own (stretch)
+## Going further (stretch)
 
-You can publish your own **composite** or **JavaScript** action, or even your own GitHub App with
-a webhook backend. That's beyond this course, but you now know the landscape.
+If you want to keep pulling this thread, you can publish your own **composite** or **JavaScript**
+action, or even build a full GitHub App with a webhook backend. Both are beyond this course, but you
+now understand the landscape well enough to explore them when a real need comes up.
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I can explain how a GitHub App differs from a personal token.
 - [ ] I know where the Actions Marketplace is.
 - [ ] I understand why pinning action versions matters.
 
-## 🧪 Demo / Try it
+## Try it
 
-Browse the [Actions Marketplace](https://github.com/marketplace?type=actions) and find one action
-you might add to your CI. Note its `uses:` line and pinned version.
+Browse the [Actions Marketplace](https://github.com/marketplace?type=actions) and find one action you
+could imagine adding to your CI. Note its exact `uses:` line and the pinned version you'd use. Just
+getting in the habit of reading the `uses:` line critically is worth the exercise.
 
-## ➡️ Next
+## Next
 
 **[Codespaces](./codespaces.md)**.

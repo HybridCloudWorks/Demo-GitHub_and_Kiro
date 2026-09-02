@@ -3,21 +3,26 @@ slug: deploy-static-sites-free-with-actions
 title: "Ship It on Merge: Deploying Static Sites Free with GitHub Actions + Pages"
 authors: [starterkit]
 tags: [github-pages, ci-cd, actions, deployment]
-description: A friendly deep-dive into automated static-site deployment — how it works, why it beats manual publishing, and the high-level config to wire it up.
+description: How automated static-site deployment actually works, why it beats dragging files around by hand, and the config you need to wire it up on any static-site generator.
 ---
 
-Manual deploys are a trap. You build the site on your laptop, drag some files somewhere, and
-three weeks later nobody remembers how. Let's replace that ritual with something better: **push
-code, and the site publishes itself.** 🚀
+Every team I've worked with has a version of the same story. Someone builds the site on their
+laptop, drags the output into a hosting dashboard, and it works. Three weeks later that person is
+on vacation, the site needs a fix, and nobody else remembers which folder to upload or which
+settings were clicked. The knowledge lived in one person's head, and now it's gone.
 
-This post is a fun-but-thorough tour of automated static-site deployment on GitHub — the *how*,
-the *why*, and the high-level *config*. It's generic: bring any static-site generator you like.
+The fix is to stop treating deployment as a manual ritual and start treating it as code. You push
+to your main branch, and the site publishes itself. No dashboard, no drag-and-drop, no tribal
+knowledge. This post walks through how that works on GitHub, why it's worth the small amount of
+setup, and the config you need. It's deliberately generic, so bring whatever static-site
+generator you already like.
 
 <!-- truncate -->
 
 ## The mental model
 
-There are three moving parts, and they hand off like a relay race:
+Under the hood there are three moving parts, and they hand off to each other like runners in a
+relay:
 
 ```mermaid
 graph LR
@@ -27,25 +32,35 @@ graph LR
     D --> E[Live at your public URL]
 ```
 
-- **Build** turns your source (Markdown, templates, components) into a folder of plain
-  HTML/CSS/JS.
-- **Upload** packages that folder as a *Pages artifact*.
-- **Deploy** publishes the artifact to GitHub Pages.
+The **build** step turns your source (Markdown, templates, components, whatever) into a plain
+folder of HTML, CSS, and JavaScript. The **upload** step packages that folder up as something
+GitHub calls a Pages artifact. The **deploy** step takes that artifact and publishes it. That's
+the whole pipeline.
 
-The beauty: it's all declared in a versioned YAML file, so the process lives *with* the project
-and runs the same every time.
+What makes this better than the manual version isn't any single step. It's that the entire
+process is written down in a YAML file that lives in your repository. The process travels with the
+project, it's visible to everyone, and it runs the exact same way whether you triggered it or a
+teammate did.
 
-## Why bother (the benefits)
+## Why it's worth the setup
 
-- **Reproducible:** the same steps run on a clean machine every time — no "it worked on mine."
-- **Auditable:** every deploy is a logged workflow run you can inspect or re-run.
-- **Zero bottleneck:** anyone who can merge can ship; no designated "deploy person."
-- **Free:** for public repositories, both the build minutes and Pages hosting are free.
-- **Safe:** combined with branch protection, only reviewed, checked changes ever publish.
+I'll be honest: the first time you wire this up, it takes longer than just dragging files would.
+The payoff shows up on every deploy after that.
 
-## The high-level config
+A build that runs on a clean, throwaway machine every time is reproducible. There's no more "it
+worked on my laptop," because there is no laptop in the loop. Every deploy is also a logged
+workflow run you can open, read, and re-run, which turns "the site broke and we don't know why"
+into a five-minute investigation. And because the pipeline is triggered by a merge, anyone who can
+merge can ship. You no longer need a designated deploy person who becomes a bottleneck the moment
+they step away.
 
-A single workflow file does it. Here's the shape (trimmed to the essentials):
+For public repositories, both the build minutes and the Pages hosting are free, which is a genuinely
+nice deal. Pair it with branch protection and the story gets even better: only reviewed, tested
+changes ever reach the live site.
+
+## The config, from the top
+
+One workflow file does the whole job. Here's the shape of it, trimmed to the essentials:
 
 ```yaml
 name: Deploy site
@@ -87,46 +102,57 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-Three details worth knowing:
+Three things trip people up here, so they're worth calling out.
 
-1. **Permissions matter.** `pages: write` and `id-token: write` are required; without them the
-   deploy step fails with a permissions error.
-2. **`configure-pages` knows your URL.** It resolves the site's base URL for you — handy if your
-   generator needs to know it lives at `/<repo>/` rather than the domain root.
-3. **The `github-pages` environment** is where the deployment shows up (and where you can add
-   protection rules like a required reviewer before publishing).
+The first is permissions. If you leave out `pages: write` or `id-token: write`, the deploy step
+fails with a permissions error that isn't especially obvious the first time you hit it. When your
+deploy dies with a 403-flavored message, this is almost always why.
 
-## The one-time switch
+The second is that `configure-pages` figures out your site's base URL for you. That matters
+because a Pages site usually lives at a subpath like `/<repo>/` rather than at the root of a
+domain, and most generators need to be told that or every link and asset will 404. Letting the
+action resolve it saves you a class of "why are all my images broken" headaches.
 
-Turn Pages on to use Actions as the source:
+The third is the `github-pages` environment. That's the named deployment target your run reports
+to, and it's also where you can attach protection rules later, like requiring a human to approve
+before anything goes live.
+
+## The one setting you have to flip
+
+The workflow won't do anything until you point Pages at Actions as its source. It's a one-time
+switch, buried where you'd expect:
 
 > **Settings → Pages → Build and deployment → Source: GitHub Actions.**
 
-After that, your site publishes to `https://<owner>.github.io/<repo>/` on every merge. Done. ✅
+After that, your site publishes to `https://<owner>.github.io/<repo>/` on every merge to main, and
+you can mostly forget the whole thing exists.
 
-## Nice upgrades once the basics work
+## Where to go once the basics work
 
-- **Smoke test the deploy.** Add a final step that `curl`s the published URL and fails if it
-  doesn't return `200`. Cheap insurance that the site is actually reachable.
-- **Path filters.** Trigger the deploy only when site files change (`paths: ["site/**"]`) so
-  unrelated commits don't rebuild.
-- **Preview builds.** Run the *build* (not the deploy) on pull requests to catch failures before
-  merge.
-- **Custom domain.** Pages supports custom domains for free — you just pay your registrar for the
-  domain itself, then point DNS at Pages and flip on "Enforce HTTPS."
+Once the happy path is solid, a few upgrades earn their keep.
 
-## A word on "static"
+Add a smoke test as the final step: `curl` the published URL and fail the run if it doesn't return
+`200`. It's a couple of lines and it catches the embarrassing case where the deploy "succeeded"
+but the site is actually unreachable. Add path filters (`paths: ["site/**"]`) so a typo fix in the
+README doesn't trigger a full rebuild and redeploy. Run the *build* on pull requests, without the
+deploy, so broken builds get caught in review instead of on main. And if you want a real domain,
+Pages supports custom domains for free; you pay your registrar for the name, point DNS at Pages,
+and switch on "Enforce HTTPS."
 
-"Static" doesn't mean "boring." It means the server just hands over files — which makes the site
-fast, cheap, secure (no server to hack), and trivially cacheable on a CDN. For docs, blogs,
-landing pages, handbooks, and demos, static + Pages is a sweet spot that's hard to beat.
+## A quick word on "static"
 
-## TL;DR
+Static doesn't mean boring, and it definitely doesn't mean limited. It means the server just hands
+over files instead of computing a response for every request. That's what makes a static site
+fast, cheap, and hard to attack (there's no application server sitting there waiting to be
+exploited), and it's why a CDN can cache the whole thing effortlessly. For docs, blogs, landing
+pages, handbooks, and demos, static plus Pages is a sweet spot that's genuinely hard to beat.
 
-Write a small workflow, flip one setting, and deploying becomes a *non-event* — a thing that just
-happens when you merge. That's the whole point: the best deploy process is the one you never have
-to think about. 😌
+## The takeaway
 
-*Prefer the formal rationale? The companion ADR — "Foundational Practices for New GitHub Pages
-Repositories" — records why automated deployment (and its six siblings) should be the default for
+Write one small workflow, flip one setting, and deployment stops being an event you plan around. It
+becomes a thing that quietly happens when you merge. That's the real goal here. The best deploy
+process is the one nobody has to think about, because it never needs a person in the loop to work.
+
+*Prefer the formal rationale? The companion ADR, "Foundational Practices for New GitHub Pages
+Repositories," records why automated deployment (and its six siblings) should be the default for
 every new repo.*

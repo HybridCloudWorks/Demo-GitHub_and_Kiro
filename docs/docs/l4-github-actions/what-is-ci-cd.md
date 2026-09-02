@@ -3,39 +3,43 @@ id: l4-what-is-ci-cd
 title: What is CI/CD?
 sidebar_label: 1. What is CI/CD?
 sidebar_position: 2
-description: Continuous Integration and Continuous Deployment explained for beginners.
+description: Continuous Integration and Continuous Deployment explained in plain language, plus how GitHub Actions runs your workflows.
 ---
 
 # What is CI/CD?
 
 > **Level:** L4 · **Estimated time:** 10 min · **Prerequisites:** finished Level 3
 
-## 🎯 Objectives
+## What you'll get out of this lesson
 
-By the end of this lesson you will be able to:
+You'll be able to define **CI** and **CD** in plain terms, explain what GitHub **Actions** does, and
+name the parts of a workflow: events, jobs, and steps.
 
-- Define **CI** and **CD** in plain language
-- Explain what GitHub **Actions** does
-- Name the parts of a workflow: events, jobs, steps
+## CI and CD, without the jargon
 
-## 📖 Lesson
+**Continuous Integration (CI)** means automatically *checking* every change as it arrives. Every
+push and every pull request kicks off your tests, linters, and builds, so a mistake gets caught in
+minutes rather than surfacing days later when nobody remembers what changed. The word "continuous" is
+the point: the checking happens constantly and automatically, not whenever someone remembers to run
+it.
 
-### CI and CD
+**Continuous Deployment (or Delivery), the CD half**, means automatically *publishing* your app once
+those checks pass, so shipping becomes push-button or fully hands-off.
 
-- **Continuous Integration (CI):** automatically **checking** every change — running tests,
-  linters, and builds — so problems are caught early, on every push or pull request.
-- **Continuous Deployment/Delivery (CD):** automatically **publishing** your app after checks
-  pass, so releasing is push-button (or fully automatic).
+Put together, CI/CD boils down to a simple promise: you push code, and robots verify it and ship it.
+The value isn't that machines are smarter than you; it's that they never forget and never get tired.
 
-Together, CI/CD means: *you push code, robots verify it and ship it.*
+## What GitHub Actions is
 
-### GitHub Actions
+**GitHub Actions** is GitHub's built-in automation system. You describe **workflows** as YAML files
+under `.github/workflows/`, and GitHub runs them on fresh virtual machines it provides for you.
+There's a generous allotment of free minutes, and for public repositories it's free outright, which
+is why it's such a natural fit for learning.
 
-**GitHub Actions** is GitHub's built-in automation. You describe **workflows** in YAML files
-under `.github/workflows/`. GitHub runs them on virtual machines it provides — free minutes are
-included, and it's completely free for public repositories.
+## The anatomy of a workflow
 
-### Anatomy of a workflow
+Every workflow shares the same skeleton. Once you can spot these parts, you can read almost any
+workflow file you come across:
 
 ```yaml
 name: Example CI          # a friendly name
@@ -56,29 +60,34 @@ jobs:                     # one or more JOBS run on a machine
 | Part | Meaning |
 |------|---------|
 | `on` | the **events** that start the workflow (push, pull_request, schedule, manual) |
-| `jobs` | groups of steps; jobs can run in parallel |
-| `runs-on` | the type of machine (e.g. `ubuntu-latest`) |
-| `steps` | ordered actions/commands |
-| `uses` | run a prebuilt **action** (like checking out your code) |
-| `run` | run a shell command |
+| `jobs` | groups of steps; different jobs can run in parallel |
+| `runs-on` | the kind of machine to use, like `ubuntu-latest` |
+| `steps` | the ordered actions and commands inside a job |
+| `uses` | run a prebuilt **action**, such as checking out your code |
+| `run` | run a shell command directly |
 
-:::note You've already seen these
-This very course repo has workflows: one lints Markdown, one grades labs, one checks the
-project, and one deploys the docs. Open `.github/workflows/` and skim them — you now know how to
-read them!
+The distinction between `uses` and `run` is worth internalizing early: `uses` pulls in someone else's
+reusable action so you don't reinvent it, while `run` is just you typing a shell command.
+
+:::note You've been surrounded by these all along
+This very course repo already runs several workflows: one lints Markdown, one grades the labs, one
+checks the project, and one deploys the docs. Open `.github/workflows/` and skim them. You now know
+enough to read them, and reading real workflows is the fastest way to get comfortable with the
+shape.
 :::
 
-## ✅ Checkpoint
+## Quick self-check
 
 - [ ] I can explain CI and CD in a sentence each.
 - [ ] I know workflows live in `.github/workflows/*.yml`.
-- [ ] I can identify `on`, `jobs`, `runs-on`, and `steps`.
+- [ ] I can point out `on`, `jobs`, `runs-on`, and `steps` in a workflow.
 
-## 🧪 Demo / Try it
+## Try it
 
-Open `.github/workflows/lint.yml` in your repo and find its `on:` events, its job, and its
-steps. Predict when it runs.
+Open `.github/workflows/lint.yml` in your repo. Find its `on:` events, its single job, and its steps,
+then predict out loud when it'll run. Checking your prediction against the Actions tab later is a
+satisfying way to confirm you've got it.
 
-## ➡️ Next
+## Next
 
 **[Your first workflow](./first-workflow.md)**.
