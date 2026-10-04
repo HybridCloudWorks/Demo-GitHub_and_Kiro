@@ -2,7 +2,7 @@
   "name": "github-kiro-course",
   "version": "1.0.0",
   "private": true,
-  "description": "GitHub + Kiro: Level 0 to Advanced — course website",
+  "description": "GitHub + Kiro: Level 0 to Advanced \u2014 course website",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -40,5 +40,13 @@
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "overrides": {
+    "joi": ">=17.13.7",
+    "fast-uri": ">=3.1.7",
+    "image-size": ">=2.0.3",
+    "qs": ">=6.16.0",
+    "serialize-javascript": ">=7.0.5",
+    "uuid": ">=11.1.1"
   }
 }
