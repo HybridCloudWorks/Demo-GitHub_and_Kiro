@@ -7,7 +7,7 @@ by **GitHub Pages** (see `../.github/workflows/deploy-docs.yml`).
 ## Local development
 
 ```bash
-npm install      # install dependencies (Node 18+; Node 20 or 22 recommended)
+npm install      # install dependencies (Node 24 or later)
 npm start        # live preview with hot reload
 npm run build    # production build into build/ (must pass with no broken links)
 npm run serve    # serve the built site locally

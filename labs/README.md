@@ -1,8 +1,8 @@
 # 🧪 Labs
 
-This folder holds the **hands-on exercises** for the course. Each level from L1 onward has at
-least one lab. Labs are how you *prove to yourself* (and to an automated grader) that a skill
-has clicked.
+This folder holds the **hands-on exercises** for the course. Levels L1 and L3 to L6 each have a
+lab (`l1/`, `l3/` … `l6/`), and Level 7 ends with the `capstone/` lab. Level 2 has no separate lab.
+Labs are how you *prove to yourself* (and to an automated grader) that a skill has clicked.
 
 ## How a lab is structured
 

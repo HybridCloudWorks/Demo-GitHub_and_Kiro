@@ -8,8 +8,8 @@ Thanks for helping keep this project and the people who use it safe.
 everyone, including anyone who might exploit the flaw before it's fixed.
 
 Instead, report it privately through GitHub's **Security → Report a vulnerability** ("Private
-vulnerability reporting") on this repository. If that isn't available to you, contact the
-maintainers through the private channel listed on the organization profile.
+vulnerability reporting") on this repository, or go straight to the form:
+[open a private security advisory](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/security/advisories/new).
 
 When you report, it helps enormously if you can include:
 

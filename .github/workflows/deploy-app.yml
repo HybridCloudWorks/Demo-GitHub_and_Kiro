@@ -38,7 +38,7 @@ jobs:
       - name: Validate the static site first
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Run static-site check
         run: node project/scripts/check-static-site.js

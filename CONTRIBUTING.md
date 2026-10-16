@@ -15,13 +15,13 @@ the conventions every lesson and lab follows so the course stays consistent and 
 | `labs/lN/` | Hands-on exercise for level N: `README.md` (instructions), `starter/`, `solution/`. |
 | `labs/_grader/` | The shared auto-grading framework used by CI. |
 | `.github/workflows/` | `deploy-docs.yml`, `deploy-app.yml`, `grade-labs.yml`, plus lint/check CI. |
-| `.kiro/` | Real Kiro artifacts (steering, specs, hooks, mcp) that double as teaching examples. |
+| `.kiro/` | Real Kiro artifacts (steering, specs) that double as teaching examples. Hook and MCP examples live in `labs/l5/examples/` and `labs/l6/examples/`. |
 
 ---
 
 ## The lesson template
 
-Every lesson is an MDX file under `docs/docs/lN-.../`. Copy `docs/docs/_lesson-template.md`
+Every lesson is a Markdown (`.md`) file under `docs/docs/lN-.../`. Copy `docs/docs/_lesson-template.md`
 and fill it in. Each lesson MUST have this shape:
 
 ```md
@@ -104,7 +104,7 @@ cd docs && npm run build                   # production build (must pass with no
 node labs/_grader/grade.js example labs/example/solution
 ```
 
-Node.js 18+ is required (Node 20 or 22 recommended).
+Node.js 24 or later is required.
 
 ---
 

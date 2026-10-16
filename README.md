@@ -4,7 +4,7 @@
 > all the way to advanced GitHub automation and Kiro power-user workflows — building a real,
 > deployed web app along the way.
 
-[![Deploy Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](./.github/workflows/deploy-docs.yml)
+[![Deploy Docs](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/HybridCloudWorks/Demo-GitHub_and_Kiro/actions/workflows/deploy-docs.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
 ---
@@ -54,7 +54,8 @@ and have never heard the word "commit" — you are exactly who this course is fo
 ├── adr/            # Architecture Decision Records (generic, portable rationale).
 ├── .devcontainer/  # Ready-to-use Codespaces / dev-container environment.
 ├── .github/        # Actions (deploy/grade/lint/checks), CODEOWNERS, issue & PR templates.
-├── .kiro/          # Real Kiro artifacts (steering, specs, hooks, mcp) used for teaching.
+├── .kiro/          # Real Kiro artifacts (steering, specs) used for teaching.
+│                   # Hook and MCP examples live in labs/l5/examples/ and labs/l6/examples/.
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md       # 👋 You are here.
@@ -72,7 +73,8 @@ and have never heard the word "commit" — you are exactly who this course is fo
 
 ## ▶️ How to start
 
-1. **Just want to read?** Open the published course site (see below) and start at **Level 0**.
+1. **Just want to read?** Open the [published course site](https://hybridcloudworks.github.io/Demo-GitHub_and_Kiro/)
+   and start at **Level 0**.
 2. **Want the full hands-on experience?** Fork this repo, then follow Level 0 which walks you
    through installing everything you need.
 
@@ -81,11 +83,9 @@ and have never heard the word "commit" — you are exactly who this course is fo
 The course is a static site built with **Docusaurus** and hosted **for free** on
 **GitHub Pages** (free for public repositories — no server, no self-hosting).
 
-Once you fork this repo and enable Pages, your copy publishes automatically to:
-
-```text
-https://<your-username>.github.io/<your-repo-name>/
-```
+The live site is at
+**[hybridcloudworks.github.io/Demo-GitHub_and_Kiro](https://hybridcloudworks.github.io/Demo-GitHub_and_Kiro/)**.
+If you fork this repo and enable Pages, your copy publishes the same way under your own account.
 
 See [`docs/`](./docs) and the deploy workflow in
 [`.github/workflows/deploy-docs.yml`](./.github/workflows/deploy-docs.yml).
