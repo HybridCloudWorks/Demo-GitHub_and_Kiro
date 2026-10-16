@@ -67,7 +67,7 @@ static site, that means running the checker you already have:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Validate the static site
         run: node project/scripts/check-static-site.js

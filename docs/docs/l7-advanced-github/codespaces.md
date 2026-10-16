@@ -50,7 +50,7 @@ Codespace should have:
 ```json
 {
   "name": "Course Dev",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
   "postCreateCommand": "cd docs && npm install",
   "customizations": {
     "vscode": { "extensions": [] }
@@ -58,7 +58,7 @@ Codespace should have:
 }
 ```
 
-With that file committed, anyone who opens a Codespace on the repo automatically gets Node 20 and the
+With that file committed, anyone who opens a Codespace on the repo automatically gets Node 24 and the
 docs dependencies installed, with no manual setup and no "works on my machine" drift. That
 reproducibility is the same idea as CI, applied to the development environment itself: the setup is
 written down as code, so it's the same for everyone, every time.

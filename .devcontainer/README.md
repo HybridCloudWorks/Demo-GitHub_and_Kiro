@@ -5,7 +5,7 @@ compatible editor) with everything preinstalled — no local setup required.
 
 ## What you get
 
-- **Node.js 20** — to build and preview the Docusaurus course site and run the lab grader.
+- **Node.js 24** — to build and preview the Docusaurus course site and run the lab grader.
 - **GitHub CLI (`gh`)** — for issues, pull requests, and repo tasks from the terminal.
 - **Docs dependencies preinstalled** — `postCreateCommand` runs `cd docs && npm install` when the
   Codespace is created.
